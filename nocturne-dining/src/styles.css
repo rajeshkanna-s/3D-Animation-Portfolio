@@ -1,0 +1,944 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-hearth: #080503;
+  --bg-panel: rgba(18, 12, 8, 0.92);
+  --bg-card: rgba(24, 16, 11, 0.85);
+  --bg-card-hover: rgba(35, 23, 16, 0.95);
+  --border-ember: rgba(229, 142, 55, 0.3);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  
+  --ember-orange: #E58E37;
+  --ember-bright: #FFA439;
+  --ember-glow: rgba(229, 142, 55, 0.35);
+  --gold-warm: #D4AF37;
+  
+  --text-white: #FCFAF7;
+  --text-cream: #EDE4D8;
+  --text-muted: #A39688;
+  
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-hearth);
+  color: var(--text-white);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(229, 142, 55, 0.1) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(180, 60, 20, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(10, 7, 5, 1) 0%, rgba(5, 3, 2, 1) 100%);
+}
+
+.nocturne-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 36px 60px;
+  position: relative;
+}
+
+/* Toast */
+.nocturne-toast {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 9999;
+  background: rgba(28, 18, 12, 0.96);
+  border: 1px solid var(--ember-orange);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8), 0 0 24px rgba(229, 142, 55, 0.25);
+  backdrop-filter: blur(14px);
+  animation: slideToast 0.3s ease;
+}
+
+.toast-flame-icon {
+  color: var(--ember-orange);
+  animation: flicker 1.5s infinite;
+}
+
+@keyframes slideToast {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+/* 1. FROZEN / STICKY TOP NAVIGATION */
+.nocturne-nav-header {
+  position: sticky;
+  top: 12px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background: rgba(12, 8, 5, 0.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border-ember);
+  border-radius: 16px;
+  margin-bottom: 28px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75);
+}
+
+.nocturne-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.flame-monogram {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(229, 142, 55, 0.15);
+  border: 1px solid var(--border-ember);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-name-serif {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #fff;
+}
+
+.brand-sub-tag {
+  display: block;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  color: var(--ember-orange);
+  font-weight: 700;
+}
+
+.nocturne-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-item-n {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+  transition: all 0.25s ease;
+}
+
+.nav-item-n:hover {
+  color: var(--ember-orange);
+}
+
+.nav-item-n.active {
+  color: var(--ember-bright);
+}
+
+.nav-item-n.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--ember-orange);
+  box-shadow: 0 0 10px var(--ember-orange);
+  border-radius: 2px;
+}
+
+.nocturne-nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+.btn-reserve-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: rgba(229, 142, 55, 0.15);
+  border: 1px solid var(--ember-orange);
+  color: var(--text-white);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-reserve-nav:hover {
+  background: var(--ember-orange);
+  color: #0A0705;
+  box-shadow: 0 0 20px var(--ember-glow);
+}
+
+/* 2. HERO STAGE */
+.nocturne-hero-stage {
+  position: relative;
+  min-height: 640px;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  padding: 56px;
+  margin-bottom: 60px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+  background-color: #0e0a07;
+}
+
+.nocturne-hero-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/hero-dining.jpg') center/cover no-repeat;
+  filter: brightness(0.6) contrast(1.1);
+  z-index: 1;
+}
+
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(8, 5, 3, 0.95) 0%, rgba(8, 5, 3, 0.7) 50%, rgba(8, 5, 3, 0.3) 100%);
+  z-index: 2;
+}
+
+.nocturne-hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 620px;
+}
+
+.michelin-stars-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(24, 16, 11, 0.9);
+  border: 1px solid var(--border-ember);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--ember-orange);
+  margin-bottom: 22px;
+}
+
+.ember-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ember-bright);
+  box-shadow: 0 0 10px var(--ember-bright);
+}
+
+.nocturne-hero-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 5.2vw, 4.6rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.ember-gradient-text {
+  background: linear-gradient(135deg, #FFF 0%, #FFA439 50%, #E58E37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+}
+
+.nocturne-hero-subtext {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-cream);
+  margin-bottom: 30px;
+}
+
+.nocturne-hero-btn-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.btn-ember-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  background: var(--ember-orange);
+  color: #080503;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 20px var(--ember-glow);
+}
+
+.btn-ember-primary:hover {
+  background: var(--ember-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(229, 142, 55, 0.5);
+}
+
+.btn-ember-primary.full-width {
+  width: 100%;
+}
+
+.btn-smoke-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(15, 10, 7, 0.6);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+}
+
+.btn-smoke-outline:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.featured-dish-glass-card {
+  background: rgba(18, 12, 8, 0.9);
+  border: 1px solid var(--border-ember);
+  border-radius: 16px;
+  padding: 22px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dish-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: var(--ember-orange);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.dish-card-headline {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.dish-card-pairing {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.highlight-wine {
+  color: var(--gold-warm);
+}
+
+/* 3. DEGUSTATION EXPLORER */
+.nocturne-section {
+  margin-bottom: 80px;
+  scroll-margin-top: 100px;
+}
+
+.section-header-centered {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title-large {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  color: #fff;
+  margin: 10px 0 12px;
+}
+
+.section-subtitle-muted {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+.degustation-grid-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 32px;
+}
+
+.courses-list-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.course-nav-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.course-nav-card:hover {
+  border-color: var(--border-ember);
+  background: var(--bg-card-hover);
+  transform: translateX(4px);
+}
+
+.course-nav-card.selected-course {
+  border-color: var(--ember-orange);
+  background: rgba(38, 25, 17, 0.95);
+  box-shadow: 0 0 24px rgba(229, 142, 55, 0.18);
+}
+
+.course-card-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.course-number {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--ember-orange);
+}
+
+.course-title-text {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.course-origin-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.active-course-spotlight-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-ember);
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(16px);
+}
+
+.spotlight-top-badge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.badge-course-num {
+  background: rgba(229, 142, 55, 0.15);
+  border: 1px solid var(--border-ember);
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--ember-orange);
+}
+
+.badge-dietary {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.spotlight-dish-name {
+  font-family: var(--font-serif);
+  font-size: 2.3rem;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.spotlight-dish-desc {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text-cream);
+  margin-bottom: 20px;
+}
+
+.spotlight-origin-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.spotlight-pairing-box {
+  background: rgba(10, 7, 5, 0.8);
+  border: 1px solid var(--border-ember);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 28px;
+}
+
+.pairing-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  color: var(--ember-orange);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.pairing-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--gold-warm);
+}
+
+/* 4. HEARTH PHILOSOPHY */
+.hearth-philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.hearth-pillar-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 32px 28px;
+  transition: all 0.3s ease;
+}
+
+.hearth-pillar-card:hover {
+  border-color: var(--border-ember);
+  background: var(--bg-card-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+.hearth-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(229, 142, 55, 0.12);
+  border: 1px solid var(--border-ember);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.pillar-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.pillar-text {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+/* 5. SOMMELIER WINE CELLAR */
+.cellar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.cellar-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 32px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.cellar-card:hover {
+  border-color: var(--border-ember);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+.cellar-vintage-badge {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--ember-orange);
+  margin-bottom: 8px;
+}
+
+.cellar-wine-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.cellar-region {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.cellar-divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin-bottom: 14px;
+}
+
+.cellar-notes {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-cream);
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.cellar-allocation-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--gold-warm);
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  padding: 6px 12px;
+  border-radius: 999px;
+  align-self: flex-start;
+}
+
+/* 6. CHEF'S COUNTER & PRIVATE */
+.private-dining-banner {
+  background: linear-gradient(135deg, rgba(28, 18, 12, 0.95) 0%, rgba(14, 9, 6, 0.95) 100%);
+  border: 1px solid var(--border-ember);
+  border-radius: 28px;
+  padding: 56px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+}
+
+.private-dining-content {
+  max-width: 700px;
+}
+
+.counter-perks-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.counter-perk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-cream);
+  font-weight: 600;
+}
+
+/* 7. AWARDS */
+.awards-banner-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  padding: 40px;
+}
+
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+
+.award-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.award-item h4 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: #fff;
+  margin-top: 6px;
+}
+
+.award-item p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* 8. RESERVATION MODAL */
+.nocturne-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.nocturne-modal-window {
+  background: #140E0A;
+  border: 1px solid var(--border-ember);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 480px;
+  padding: 36px;
+  box-shadow: 0 24px 70px rgba(229, 142, 55, 0.25);
+  animation: popModal 0.25s ease;
+}
+
+@keyframes popModal {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.modal-headline {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.modal-close-round {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-close-round:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+.modal-body-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group-n {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-group-n label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ember-orange);
+  font-weight: 700;
+}
+
+.nocturne-select,
+.nocturne-input {
+  background: #090604;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: #fff;
+  font-size: 0.85rem;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.nocturne-select:focus,
+.nocturne-input:focus {
+  border-color: var(--ember-orange);
+}
+
+.reservation-pricing-summary {
+  background: #090604;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 6px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--text-cream);
+  margin-bottom: 6px;
+}
+
+.summary-line:last-child {
+  margin-bottom: 0;
+}
+
+.wine-add-text {
+  color: var(--gold-warm);
+}
+
+/* 9. FOOTER */
+.nocturne-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 50px;
+}
+
+.footer-cols-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.footer-brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.footer-brand-desc {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  max-width: 320px;
+}
+
+.footer-col-n h4 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--ember-orange);
+  margin-bottom: 12px;
+}
+
+.footer-col-n p {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.inline-icon {
+  color: var(--ember-orange);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.footer-bottom-line {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 24px;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+@media (max-width: 1024px) {
+  .degustation-grid-wrapper,
+  .hearth-philosophy-grid,
+  .cellar-grid,
+  .awards-grid,
+  .footer-cols-grid {
+    grid-template-columns: 1fr;
+  }
+  .nocturne-nav-links {
+    display: none;
+  }
+  .nocturne-hero-stage {
+    padding: 32px;
+  }
+  .private-dining-banner {
+    padding: 32px;
+  }
+}

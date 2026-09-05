@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-emerald-dark: #07100e;
+  --gold-primary: #d9b36a;
+  --gold-light: #f5e4bc;
+  --gold-gradient: linear-gradient(135deg, #fbe8c9 0%, #d9b36a 50%, #8a6927 100%);
+  --text-white: #fcfcfc;
+  --text-muted: #cad8d4;
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--bg-emerald-dark); color: var(--text-white); font-family: var(--font-sans); min-height: 100vh; overflow-x: hidden; }
+
+.aurelia-app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 32px 60px;
+  position: relative;
+}
+
+/* Nav */
+.aurelia-nav {
+  position: sticky;
+  top: 12px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background: rgba(7, 16, 14, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(217, 179, 106, 0.25);
+  border-radius: 16px;
+  margin-bottom: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.brand-diamond {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(217, 179, 106, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a1b18;
+}
+
+.diamond-inner {
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--gold-primary);
+  transform: rotate(45deg);
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  color: #fcfcfc;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav-link {
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-contact-pill {
+  padding: 10px 22px;
+  border-radius: 9999px;
+  border: 1px solid rgba(217, 179, 106, 0.5);
+  background: transparent;
+  color: var(--gold-light);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Hero Stage */
+.aurelia-hero-stage {
+  position: relative;
+  min-height: 720px;
+  border-radius: 36px;
+  border: 1px solid rgba(217, 179, 106, 0.25);
+  background-image: url('/hero-sky-villa.jpg');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+}
+
+.aurelia-hero-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(7, 16, 14, 0.95) 0%, rgba(7, 16, 14, 0.7) 45%, rgba(7, 16, 14, 0.2) 100%);
+  pointer-events: none;
+}
+
+.aurelia-hero-left {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+}
+
+.hero-tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(3.6rem, 6.2vw, 5.8rem);
+  font-weight: 400;
+  line-height: 1.02;
+  margin-bottom: 24px;
+  color: var(--gold-primary);
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.hero-btns-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-aurelia-solid {
+  padding: 14px 28px;
+  border-radius: 6px;
+  background: var(--gold-primary);
+  color: #07100e;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-aurelia-border {
+  padding: 13px 26px;
+  border-radius: 6px;
+  background: rgba(10, 27, 24, 0.6);
+  border: 1px solid rgba(217, 179, 106, 0.4);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Bottom Metrics Bar */
+.bottom-metrics-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid rgba(217, 179, 106, 0.2);
+  margin-top: 40px;
+}
+
+.metric-col h4 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--gold-primary);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.metric-col p {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+/* Developments Section */
+.dev-grid-aurelia {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.dev-card-aurelia {
+  background: rgba(15, 36, 32, 0.7);
+  border: 1px solid rgba(217, 179, 106, 0.25);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dev-card-aurelia img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .bottom-metrics-bar { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
