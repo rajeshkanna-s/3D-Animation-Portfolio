@@ -39,3 +39,6 @@ Thumbs.db
 
 dist_site/
 .temp_gh_*
+deploy-*.mjs
+commit-*.py
+*.py
