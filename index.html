@@ -154,6 +154,11 @@
     .btn-soluna { background: #38BDF8; color: #06111C; }
     .btn-aureliadev { background: #E2B774; color: #0E1617; }
     
+    .btn-ember { background: #FF6B35; color: #120C08; }
+    .btn-solara { background: #E5C378; color: #120C08; }
+    .btn-webroast { background: #E63946; color: #FFFFFF; }
+    .btn-miravale { background: #A855F7; color: #060912; }
+    
     .btn-launch:hover { filter: brightness(1.15); transform: translateY(-2px); }
   </style>
 </head>
@@ -162,7 +167,7 @@
     <header>
       <div class="badge">Master Portfolio Hub</div>
       <h1>3D Animation & Motion Projects</h1>
-      <p class="lead">13 standalone, full-scale interactive websites built with React, pure Vanilla CSS, clean 3D CGI artwork backdrops, and interactive 3D parallax.</p>
+      <p class="lead">17 standalone, full-scale interactive web experiences built with React, Three.js, pure Vanilla CSS, clean CGI art, and 3D parallax.</p>
     </header>
 
     <div class="grid">
@@ -170,7 +175,7 @@
       <!-- 1. VELORA (5180) -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="velora-chocolate/public/hero-chocolate.jpg" alt="Velora Chocolate">
+          <img src="velora-chocolate/hero-chocolate.jpg" onerror="this.src='velora-chocolate/public/hero-chocolate.jpg'" alt="Velora Chocolate">
         </div>
         <div class="card-body">
           <div>
@@ -178,7 +183,7 @@
             <h2 class="card-title">VELORA • Artisan Chocolatier</h2>
             <p class="card-desc">3D molten chocolate flow, gold typography, social proof badge, Grand Cru selection, and interactive tasting box builder.</p>
           </div>
-          <a href="http://localhost:5180" target="_blank" class="btn-launch btn-velora">
+          <a href="http://localhost:5180" data-slug="velora-chocolate" target="_blank" class="btn-launch btn-velora">
             Launch Velora (Port 5180) ↗
           </a>
         </div>
@@ -187,7 +192,7 @@
       <!-- 2. AURELIA (5181) -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="aurelia-luxury-estates/public/hero-sky-villa.jpg" alt="Aurelia Luxury Estates">
+          <img src="aurelia-luxury-estates/hero-sky-villa.jpg" onerror="this.src='aurelia-luxury-estates/public/hero-sky-villa.jpg'" alt="Aurelia Luxury Estates">
         </div>
         <div class="card-body">
           <div>
@@ -195,7 +200,7 @@
             <h2 class="card-title">AURELIA • Extraordinary Living</h2>
             <p class="card-desc">Architectural cantilevered sky penthouse overlooking sunset city skyline, gold serif typography, and VIP consultation booking.</p>
           </div>
-          <a href="http://localhost:5181" target="_blank" class="btn-launch btn-aurelia">
+          <a href="http://localhost:5181" data-slug="aurelia-luxury-estates" target="_blank" class="btn-launch btn-aurelia">
             Launch Aurelia (Port 5181) ↗
           </a>
         </div>
@@ -204,7 +209,7 @@
       <!-- 3. TIDAL VEIL (5182) -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="tidal-veil-skincare/public/design-system.jpg" alt="Tidal Veil Skincare">
+          <img src="tidal-veil-skincare/design-system.jpg" onerror="this.src='tidal-veil-skincare/public/design-system.jpg'" alt="Tidal Veil Skincare">
         </div>
         <div class="card-body">
           <div>
@@ -212,7 +217,7 @@
             <h2 class="card-title">TIDAL VEIL • Design System</h2>
             <p class="card-desc">Living design system showcase: 3D frosted dropper bottle, color swatches with click-to-copy hex, typography specimen, and 3D material spheres.</p>
           </div>
-          <a href="http://localhost:5182" target="_blank" class="btn-launch btn-tidal">
+          <a href="http://localhost:5182" data-slug="tidal-veil-skincare" target="_blank" class="btn-launch btn-tidal">
             Launch Tidal Veil (Port 5182) ↗
           </a>
         </div>
@@ -221,7 +226,7 @@
       <!-- 4. ROOTSOLE (5183) -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="rootsole-footwear/public/hero-sneaker.jpg" alt="Rootsole Footwear">
+          <img src="rootsole-footwear/hero-sneaker.jpg" onerror="this.src='rootsole-footwear/public/hero-sneaker.jpg'" alt="Rootsole Footwear">
         </div>
         <div class="card-body">
           <div>
@@ -229,7 +234,7 @@
             <h2 class="card-title">ROOTSOLE • Built By Nature</h2>
             <p class="card-desc">3D eco sneaker on moss boulder with terracotta arch, 4 material science pillars, 3 earth-tone colorways, size picker, and cart drawer.</p>
           </div>
-          <a href="http://localhost:5183" target="_blank" class="btn-launch btn-rootsole">
+          <a href="http://localhost:5183" data-slug="rootsole-footwear" target="_blank" class="btn-launch btn-rootsole">
             Launch Rootsole (Port 5183) ↗
           </a>
         </div>
@@ -238,7 +243,7 @@
       <!-- 5. KINROOT (5184) -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="kinroot-fitness/public/hero-adaptive.jpg" alt="Kinroot Adaptive Fitness">
+          <img src="kinroot-fitness/hero-adaptive.jpg" onerror="this.src='kinroot-fitness/public/hero-adaptive.jpg'" alt="Kinroot Adaptive Fitness">
         </div>
         <div class="card-body">
           <div>
@@ -246,7 +251,7 @@
             <h2 class="card-title">KINROOT • Adaptive Programs</h2>
             <p class="card-desc">3D stone portal with glass kettlebell and fluid ribbons, Hybrid Strength card, Today's Schedule live list, and floating live sync bar.</p>
           </div>
-          <a href="http://localhost:5184" target="_blank" class="btn-launch btn-kinroot">
+          <a href="http://localhost:5184" data-slug="kinroot-fitness" target="_blank" class="btn-launch btn-kinroot">
             Launch Kinroot (Port 5184) ↗
           </a>
         </div>
@@ -255,7 +260,7 @@
       <!-- 6. AURA NOIR (5185) -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="aura-noir-perfume/public/hero-perfume.jpg" alt="Aura Noir Haute Parfumerie">
+          <img src="aura-noir-perfume/hero-perfume.jpg" onerror="this.src='aura-noir-perfume/public/hero-perfume.jpg'" alt="Aura Noir Haute Parfumerie">
         </div>
         <div class="card-body">
           <div>
@@ -263,7 +268,7 @@
             <h2 class="card-title">AURA NOIR • Grasse Atelier</h2>
             <p class="card-desc">3D faceted obsidian crystal flacon with smoke and amber droplets, interactive Olfactory Accord Blender, and fragrance pyramid.</p>
           </div>
-          <a href="http://localhost:5185" target="_blank" class="btn-launch btn-aura">
+          <a href="http://localhost:5185" data-slug="aura-noir-perfume" target="_blank" class="btn-launch btn-aura">
             Launch Aura Noir (Port 5185) ↗
           </a>
         </div>
@@ -272,7 +277,7 @@
       <!-- 7. NOCTURNE (5186) -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="nocturne-dining/public/hero-dining.jpg" alt="Nocturne Gastronomy">
+          <img src="nocturne-dining/hero-dining.jpg" onerror="this.src='nocturne-dining/public/hero-dining.jpg'" alt="Nocturne Gastronomy">
         </div>
         <div class="card-body">
           <div>
@@ -280,7 +285,7 @@
             <h2 class="card-title">NOCTURNE • Modernist Hearth</h2>
             <p class="card-desc">3D open-flame hearth with seared wagyu on volcanic stone, interactive 7-course degustation menu explorer, and live reservation modal.</p>
           </div>
-          <a href="http://localhost:5186" target="_blank" class="btn-launch btn-nocturne">
+          <a href="http://localhost:5186" data-slug="nocturne-dining" target="_blank" class="btn-launch btn-nocturne">
             Launch Nocturne (Port 5186) ↗
           </a>
         </div>
@@ -289,7 +294,7 @@
       <!-- 8. PULSEFORM (5187) -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="pulseform-fitness/public/hero-fitness.jpg" alt="Pulseform Connected Fitness">
+          <img src="pulseform-fitness/hero-fitness.jpg" onerror="this.src='pulseform-fitness/public/hero-fitness.jpg'" alt="Pulseform Connected Fitness">
         </div>
         <div class="card-body">
           <div>
@@ -297,7 +302,7 @@
             <h2 class="card-title">PULSEFORM • Telemetry Lab</h2>
             <p class="card-desc">3D carbon-fiber equipment with neon cyan telemetry lasers, real-time threshold watts strain calculator, and studio pass booking.</p>
           </div>
-          <a href="http://localhost:5187" target="_blank" class="btn-launch btn-pulse">
+          <a href="http://localhost:5187" data-slug="pulseform-fitness" target="_blank" class="btn-launch btn-pulse">
             Launch Pulseform (Port 5187) ↗
           </a>
         </div>
@@ -306,7 +311,7 @@
       <!-- 9. GUSTO ITALIAN (5188) -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="gusto-italian/public/hero-pasta.jpg" alt="Gusto Italian Restaurant">
+          <img src="gusto-italian/hero-pasta.jpg" onerror="this.src='gusto-italian/public/hero-pasta.jpg'" alt="Gusto Italian Restaurant">
         </div>
         <div class="card-body">
           <div>
@@ -314,7 +319,7 @@
             <h2 class="card-title">GUSTO • Savor The Art of Italy</h2>
             <p class="card-desc">3D handmade tagliatelle with zero-g floating basil & parmesan flakes, regional 5-course menu explorer, wine pairing notes, and table booking.</p>
           </div>
-          <a href="http://localhost:5188" target="_blank" class="btn-launch btn-gusto">
+          <a href="http://localhost:5188" data-slug="gusto-italian" target="_blank" class="btn-launch btn-gusto">
             Launch Gusto (Port 5188) ↗
           </a>
         </div>
@@ -323,7 +328,7 @@
       <!-- 10. NØVA SNEAKERS (5189) -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="nova-sneakers/public/hero-sneaker.jpg" alt="NØVA Techwear Sneakers">
+          <img src="nova-sneakers/hero-sneaker.jpg" onerror="this.src='nova-sneakers/public/hero-sneaker.jpg'" alt="NØVA Techwear Sneakers">
         </div>
         <div class="card-body">
           <div>
@@ -331,7 +336,7 @@
             <h2 class="card-title">NØVA • Built To Move Different</h2>
             <p class="card-desc">3D cyber exoskeleton sneaker with glowing LED energy sole, live drop countdown HUD, colorway customizer, and pre-order reservation.</p>
           </div>
-          <a href="http://localhost:5189" target="_blank" class="btn-launch btn-nova">
+          <a href="http://localhost:5189" data-slug="nova-sneakers" target="_blank" class="btn-launch btn-nova">
             Launch NØVA (Port 5189) ↗
           </a>
         </div>
@@ -340,7 +345,7 @@
       <!-- 11. MAISON BRAISE (5190) -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="maison-braise/public/images/hero-plated-entree.png" alt="Maison Braise Fire Gastronomy">
+          <img src="maison-braise/images/hero-plated-entree.png" onerror="this.src='maison-braise/public/images/hero-plated-entree.png'" alt="Maison Braise Fire Gastronomy">
         </div>
         <div class="card-body">
           <div>
@@ -348,16 +353,33 @@
             <h2 class="card-title">MAISON BRAISE • Crafted with Fire</h2>
             <p class="card-desc">3D woodfired signature dish, curved rotating orbit ring, frozen scroll-spy header, 5-course tasting menu, chef quote & signature, and live table booking.</p>
           </div>
-          <a href="http://localhost:5190" target="_blank" class="btn-launch btn-braise">
+          <a href="http://localhost:5190" data-slug="maison-braise" target="_blank" class="btn-launch btn-braise">
             Launch Maison Braise (Port 5190) ↗
           </a>
         </div>
       </div>
 
-      <!-- 12. SOLUNA COVE RESORT (5192) -->
+      <!-- 12. EMBER RESTAURANT (5191) -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="soluna-cove-resort/public/images/hero-villa.png" alt="Soluna Cove Resort">
+          <img src="ember-restaurant/images/hero-plated-entree.png" onerror="this.src='ember-restaurant/public/images/hero-plated-entree.png'" alt="Ember Restaurant">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag" style="color: #FF6B35;">Fire-Forged Cuisine</div>
+            <h2 class="card-title">EMBER • Made to be Remembered</h2>
+            <p class="card-desc">Artisanal wood-fired gastronomy, signature dishes, chef tasting notes, and seasonal table reservation experience.</p>
+          </div>
+          <a href="http://localhost:5191" data-slug="ember-restaurant" target="_blank" class="btn-launch btn-ember">
+            Launch Ember (Port 5191) ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- 13. SOLUNA COVE RESORT (5192) -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="soluna-cove-resort/images/hero-villa.png" onerror="this.src='soluna-cove-resort/public/images/hero-villa.png'" alt="Soluna Cove Resort">
         </div>
         <div class="card-body">
           <div>
@@ -365,16 +387,16 @@
             <h2 class="card-title">SOLUNA COVE • Oceanfront Living</h2>
             <p class="card-desc">Cliffside infinity pool villas, private ocean terraces, immersive wellness escapes, and seamless online suite booking.</p>
           </div>
-          <a href="http://localhost:5192" target="_blank" class="btn-launch btn-soluna">
+          <a href="http://localhost:5192" data-slug="soluna-cove-resort" target="_blank" class="btn-launch btn-soluna">
             Launch Soluna Cove (Port 5192) ↗
           </a>
         </div>
       </div>
 
-      <!-- 13. AURELIA DEVELOPMENTS (5193) -->
+      <!-- 14. AURELIA DEVELOPMENTS (5193) -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="aurelia-developments/public/images/aurelia-hero.png" alt="Aurelia Developments">
+          <img src="aurelia-developments/images/aurelia-hero.png" onerror="this.src='aurelia-developments/public/images/aurelia-hero.png'" alt="Aurelia Developments">
         </div>
         <div class="card-body">
           <div>
@@ -382,13 +404,77 @@
             <h2 class="card-title">AURELIA • Premier Developments</h2>
             <p class="card-desc">Next-generation architectural portfolio, skyline views, residential tower specs, interactive filter gallery, and investor prospectus.</p>
           </div>
-          <a href="http://localhost:5193" target="_blank" class="btn-launch btn-aureliadev">
+          <a href="http://localhost:5193" data-slug="aurelia-developments" target="_blank" class="btn-launch btn-aureliadev">
             Launch Aurelia Devs (Port 5193) ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- 15. SOLARA ATELIER (5194) -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="solara-atelier/assets/hero.png" onerror="this.src='solara-atelier/public/assets/hero.png'" alt="Solara Atelier">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag" style="color: #E5C378;">Celestial Horology</div>
+            <h2 class="card-title">SOLARA ATELIER • Eclipse Timepiece</h2>
+            <p class="card-desc">Interactive 3D mechanical watch customizer with exploded component view, materials engine, and horology craft archive.</p>
+          </div>
+          <a href="http://localhost:5194" data-slug="solara-atelier" target="_blank" class="btn-launch btn-solara">
+            Launch Solara (Port 5194) ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- 16. WEB ROAST (5195) -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="web-roast/assets/hero.png" onerror="this.src='web-roast/public/assets/hero.png'" alt="Web Roast Coffee">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag" style="color: #E63946;">Kinetic Cold Brew</div>
+            <h2 class="card-title">WEB ROAST • Fuel Your Story</h2>
+            <p class="card-desc">High-octane urban coffee experience with real-time 3D cup model, flavor profiler, dynamic roast selector, and pre-order bag.</p>
+          </div>
+          <a href="http://localhost:5195" data-slug="web-roast" target="_blank" class="btn-launch btn-webroast">
+            Launch Web Roast (Port 5195) ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- 17. MIRA VALE (5196) -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="Sites refence images/3919194510234647779_31582183788_jpg.jpg" alt="Mira Vale Studio">
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="card-tag" style="color: #A855F7;">Creative Motion Lab</div>
+            <h2 class="card-title">MIRA VALE • Visual Direction</h2>
+            <p class="card-desc">Cutting-edge motion studio portfolio showcasing brand identities, 3D CGI direction, interactive typography, and case studies.</p>
+          </div>
+          <a href="http://localhost:5196" data-slug="mira-vale-studio" target="_blank" class="btn-launch btn-miravale">
+            Launch Mira Vale ↗
           </a>
         </div>
       </div>
 
     </div>
   </div>
+
+  <script>
+    // Seamless routing for GitHub Pages
+    if (window.location.hostname.includes('github.io') || (!window.location.port && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1')) {
+      document.querySelectorAll('a.btn-launch').forEach(a => {
+        const slug = a.getAttribute('data-slug');
+        if (slug) {
+          a.href = './' + slug + '/';
+          a.innerText = 'Launch Online Demo ↗';
+        }
+      });
+    }
+  </script>
 </body>
 </html>

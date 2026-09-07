@@ -36,3 +36,6 @@ Thumbs.db
 *.sln
 *.sw?
 .gemini/
+
+dist_site/
+.temp_gh_*
