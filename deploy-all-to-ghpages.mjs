@@ -179,6 +179,12 @@ async function main() {
   fs.writeFileSync(path.join(distSiteDir, 'index.html'), indexHtml);
   fs.writeFileSync(path.join(distSiteDir, '.nojekyll'), '');
 
+  // Copy Master Favicon
+  const masterFavicon = path.join(__dirname, 'favicon.svg');
+  if (fs.existsSync(masterFavicon)) {
+    fs.copyFileSync(masterFavicon, path.join(distSiteDir, 'favicon.svg'));
+  }
+
   // Copy reference assets if any
   const refImagesDir = path.join(__dirname, 'Sites refence images');
   if (fs.existsSync(refImagesDir)) {

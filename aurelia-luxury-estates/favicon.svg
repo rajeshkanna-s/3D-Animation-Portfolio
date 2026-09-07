@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldArch" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4BC" />
+      <stop offset="50%" stop-color="#D9B36A" />
+      <stop offset="100%" stop-color="#9E7D3B" />
+    </linearGradient>
+    <radialGradient id="estatesBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0E1C1A" />
+      <stop offset="100%" stop-color="#040908" />
+    </radialGradient>
+    <filter id="archGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#D9B36A" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  
+  <rect width="92" height="92" x="4" y="4" rx="24" fill="url(#estatesBg)" stroke="#D9B36A" stroke-width="2.5" stroke-opacity="0.4" />
+  
+  <!-- Architectural Sky Villa Diamond Tower -->
+  <g filter="url(#archGlow)">
+    <!-- Outer Diamond -->
+    <path d="M50 16 L80 50 L50 84 L20 50 Z" fill="none" stroke="url(#goldArch)" stroke-width="2.5" />
+    <!-- Inner Villa Cantilever -->
+    <path d="M50 26 L70 50 L50 74 L30 50 Z" fill="none" stroke="url(#goldArch)" stroke-width="2" opacity="0.7" />
+    <!-- Horizon Crossbeam -->
+    <line x1="26" y1="50" x2="74" y2="50" stroke="url(#goldArch)" stroke-width="2" />
+    <line x1="50" y1="20" x2="50" y2="80" stroke="url(#goldArch)" stroke-width="2" />
+    <circle cx="50" cy="50" r="3.5" fill="#F5E4BC" />
+  </g>
+</svg>

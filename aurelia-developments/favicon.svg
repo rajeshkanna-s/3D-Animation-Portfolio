@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="92" height="92" x="4" y="4" rx="24" fill="#11191A" stroke="#B78B4B" stroke-width="3"/>
+  <!-- Architectural skyline monogram -->
+  <path d="M30 75 L30 42 L45 30 L45 75 Z" fill="#B78B4B" opacity="0.9" />
+  <path d="M48 75 L48 22 L68 22 L68 75 Z" fill="#D4AF37" />
+  <path d="M71 75 L71 48 L82 56 L82 75 Z" fill="#B78B4B" opacity="0.75" />
+</svg>
