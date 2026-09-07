@@ -26,7 +26,7 @@ const PROPERTIES = [
     price: '$28,500,000',
     beds: '5 Beds · 6.5 Baths',
     area: '8,400 sq.ft',
-    image: '/hero-sky-villa.jpg',
+    image: './hero-sky-villa.jpg',
     tag: 'Private Elevator & Sky Deck'
   },
   {
@@ -36,7 +36,7 @@ const PROPERTIES = [
     price: 'AED 42,000,000',
     beds: '6 Beds · 8 Baths',
     area: '11,200 sq.ft',
-    image: '/developments.jpg',
+    image: './developments.jpg',
     tag: 'Private Marina Berth'
   },
   {
@@ -46,7 +46,7 @@ const PROPERTIES = [
     price: 'SGD 18,800,000',
     beds: '4 Beds · 5 Baths',
     area: '6,800 sq.ft',
-    image: '/public/aurelia-slide4.jpg',
+    image: './aurelia-slide4.jpg',
     tag: 'Biophilic Infinity Pool'
   },
   {
@@ -56,7 +56,7 @@ const PROPERTIES = [
     price: '$19,200,000',
     beds: '6 Beds · 7 Baths',
     area: '9,100 sq.ft',
-    image: '/public/aurelia-slide5.jpg',
+    image: './aurelia-slide5.jpg',
     tag: 'Heated Helipad & Wine Cellar'
   }
 ];
@@ -214,7 +214,7 @@ export default function App() {
               }}
             >
               <div className="prop-img-wrap">
-                <img src={prop.image || '/hero-sky-villa.jpg'} alt={prop.name} />
+                <img src={prop.image || './hero-sky-villa.jpg'} alt={prop.name} />
                 <span className="prop-badge-tag">{prop.tag}</span>
               </div>
               <div className="prop-body">
@@ -303,7 +303,7 @@ export default function App() {
             </div>
           </div>
           <div className="about-img-side">
-            <img src="/public/collection.jpg" alt="Aurelia Private Collection" />
+            <img src="./collection.jpg" alt="Aurelia Private Collection" />
           </div>
         </div>
       </section>

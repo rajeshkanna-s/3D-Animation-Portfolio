@@ -36,7 +36,7 @@ const PRODUCTS = [
     notes: 'Toasted nut aroma, silky praline center, caramelized crunch',
     rating: 4.9,
     reviews: 320,
-    image: '/product-hazelnut-praline.jpg'
+    image: './product-hazelnut-praline.jpg'
   },
   {
     id: 'velvet-truffles',
@@ -49,7 +49,7 @@ const PRODUCTS = [
     notes: 'Dusted French cocoa, velvety melt, bourbon vanilla undertone',
     rating: 5.0,
     reviews: 480,
-    image: '/product-velvet-truffles.jpg'
+    image: './product-velvet-truffles.jpg'
   },
   {
     id: 'salted-caramel',
@@ -62,7 +62,7 @@ const PRODUCTS = [
     notes: 'Gooey golden caramel, delicate salt crystal burst, 72% dark crust',
     rating: 4.8,
     reviews: 190,
-    image: '/product-salted-caramel.jpg'
+    image: './product-salted-caramel.jpg'
   },
   {
     id: 'noir-gift-box',
@@ -75,7 +75,7 @@ const PRODUCTS = [
     notes: 'Full spectrum assortment, hand-tied satin ribbon, gold foil finish',
     rating: 5.0,
     reviews: 512,
-    image: '/product-noir-gift-box.jpg'
+    image: './product-noir-gift-box.jpg'
   },
   {
     id: 'cocoa-bonbons',
@@ -88,7 +88,7 @@ const PRODUCTS = [
     notes: 'Faceted crystal geometric domes with 24k edible gold leaf flecks',
     rating: 4.9,
     reviews: 215,
-    image: '/product-cocoa-bonbons.jpg'
+    image: './product-cocoa-bonbons.jpg'
   },
   {
     id: 'signature-dark',
@@ -101,7 +101,7 @@ const PRODUCTS = [
     notes: 'Crisp temper snap, floral berry bouquet, lingering dark velvet finish',
     rating: 4.9,
     reviews: 640,
-    image: '/product-signature-dark.jpg'
+    image: './product-signature-dark.jpg'
   }
 ];
 
@@ -355,7 +355,7 @@ export default function App() {
                 <ArrowRight size={14} />
               </button>
             </div>
-            <img src="/velora-gift-box.jpg?v=2" alt="Curated Gift Box" className="gift-card-img" />
+            <img src="./velora-gift-box.jpg?v=2" alt="Curated Gift Box" className="gift-card-img" />
           </div>
         </div>
 
@@ -462,7 +462,7 @@ export default function App() {
 
           <div className="story-image-col">
             <div className="story-image-frame">
-              <img src="/story-craft-montage.jpg?v=2" alt="Artisanal Bean to Bar Craftsmanship" className="story-craft-full-img" />
+              <img src="./story-craft-montage.jpg?v=2" alt="Artisanal Bean to Bar Craftsmanship" className="story-craft-full-img" />
               <div className="image-overlay-caption">
                 <span className="caption-dot" />
                 <span>Single-Estate Cacao • 72h Conching • 24k Gold Finish</span>
@@ -539,7 +539,7 @@ export default function App() {
 
           <div className="mobile-image-col">
             <div className="mobile-showcase-frame">
-              <img src="/velora-mobile-app.jpg?v=2" alt="Velora Mobile App Experience" className="mobile-showcase-img" />
+              <img src="./velora-mobile-app.jpg?v=2" alt="Velora Mobile App Experience" className="mobile-showcase-img" />
             </div>
           </div>
         </div>

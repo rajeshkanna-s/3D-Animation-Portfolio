@@ -53,7 +53,7 @@ const COACHES = [
     role: 'Head of Biomechanics',
     specialty: 'High-Velocity Eccentric Loading & Kinetic Power',
     rating: '5.0 (340+ athletes)',
-    image: '/kinroot-slide2.jpg',
+    image: './kinroot-slide2.jpg',
     cert: 'CSCS · Olympic Strength Specialist'
   },
   {
@@ -61,7 +61,7 @@ const COACHES = [
     role: 'Fascial & Breath Director',
     specialty: 'Thoracic Mobility & Autonomic Nervous Regulation',
     rating: '4.9 (480+ athletes)',
-    image: '/kinroot-slide3.jpg',
+    image: './kinroot-slide3.jpg',
     cert: 'FRCms · Diaphragmatic Mechanics'
   },
   {
@@ -69,7 +69,7 @@ const COACHES = [
     role: 'Altitude & VO2 Specialist',
     specialty: 'Zone 2 Mitochondrial Density & Terrain Adaptation',
     rating: '5.0 (290+ athletes)',
-    image: '/kinroot-slide4.jpg',
+    image: './kinroot-slide4.jpg',
     cert: 'EXOS · Endurance Physiology'
   }
 ];
@@ -79,19 +79,19 @@ const SPACES = [
     title: 'The Monolith Boulder Room',
     desc: '3D volcanic stone monoliths with ambient oxygen-enriched air and biomechanically calibrated grip surfaces.',
     tag: 'Natural Grip Dynamics',
-    bg: '/hero-adaptive.jpg'
+    bg: './hero-adaptive.jpg'
   },
   {
     title: 'Hydro-Recovery Thermal Chamber',
     desc: 'Contrast therapy pool suite, infused mineral baths, and far-infrared sound resonance loungers.',
     tag: 'Cellular Restoration',
-    bg: '/kinroot-slide5.jpg'
+    bg: './kinroot-slide5.jpg'
   },
   {
     title: 'Kinetic Terrain Sanctuary',
     desc: 'Undulating turf, gradient timber tracks, and zero-gravity pneumatic resistance stations.',
     tag: 'Multi-Planar Grounding',
-    bg: '/kinroot-slide3.jpg'
+    bg: './kinroot-slide3.jpg'
   }
 ];
 
@@ -314,7 +314,7 @@ export default function App() {
         <div className="hero-art-showcase">
           <div className="hero-art-img-wrapper">
             <img 
-              src="/hero-adaptive.jpg" 
+              src="./hero-adaptive.jpg" 
               alt="Kinroot Biophilic Stone Portal, Kettlebell & Glass Ribbon" 
               className="hero-art-full-img"
             />
@@ -340,7 +340,7 @@ export default function App() {
               'A high-potency functional strength system uniting heavy eccentric loading with multi-planar joint mobility and explosive kinetic power.'
             )}
           >
-            <div className="card-portal-art-backdrop" style={{ backgroundImage: `url('/kinroot-slide2.jpg')` }} />
+            <div className="card-portal-art-backdrop" style={{ backgroundImage: `url('./kinroot-slide2.jpg')` }} />
             <div className="card-content-side">
               <div className="card-eyebrow-tag">FEATURED PROGRAM</div>
               <h2 className="card-title-heavy">Hybrid<br />Strength</h2>
@@ -438,7 +438,7 @@ export default function App() {
               'Integrates diaphragmatic tempo mechanics, thoracic decompressive spirals, and fascial kinetic unwinding to dissolve deep structural stiffness.'
             )}
           >
-            <div className="card-portal-art-backdrop" style={{ backgroundImage: `url('/kinroot-slide3.jpg')` }} />
+            <div className="card-portal-art-backdrop" style={{ backgroundImage: `url('./kinroot-slide3.jpg')` }} />
             <div className="card-content-side">
               <h3 className="card-title-heavy medium">Breath<br />Mobility</h3>
               <p className="card-desc-text">
@@ -481,7 +481,7 @@ export default function App() {
               'Zone 2 cardiovascular base building fused with undulating outdoor gradient simulations and mitochondrial density conditioning.'
             )}
           >
-            <div className="card-portal-art-backdrop" style={{ backgroundImage: `url('/kinroot-slide4.jpg')` }} />
+            <div className="card-portal-art-backdrop" style={{ backgroundImage: `url('./kinroot-slide4.jpg')` }} />
             <div className="card-content-side">
               <h3 className="card-title-heavy medium">Endurance<br />Terrain</h3>
               <p className="card-desc-text">
@@ -847,7 +847,7 @@ export default function App() {
             <p className="modal-program-sub">Dynamic strain-to-recovery feedback loop calculation.</p>
 
             <div className="video-player-mockup">
-              <img src="/kinroot-slide5.jpg" alt="Adaptive Training Architecture" className="video-backdrop-img" />
+              <img src="./kinroot-slide5.jpg" alt="Adaptive Training Architecture" className="video-backdrop-img" />
               <div className="video-play-center-btn" onClick={() => showToast('Playing 4K Adaptive Methodology Breakdown')}>
                 <Play style={{ width: 28, height: 28, fill: '#0b0f0d', color: '#0b0f0d', marginLeft: 4 }} />
               </div>

@@ -19,9 +19,9 @@ import {
 const nav = [["Stay", "#suites"], ["Experiences", "#experience"], ["Dining", "#story"], ["Gallery", "#gallery"], ["Contact", "#contact"]];
 
 const suites = [
-  { name: "Beachfront Suite", price: "From $650 / night", image: "/images/ocean-suite.png", note: "Two guests · Ocean terrace" },
-  { name: "Cliffside Pool Villa", price: "From $950 / night", image: "/images/cliff-villa.png", note: "Four guests · Private infinity pool" },
-  { name: "Horizon Penthouse", price: "From $1,250 / night", image: "/images/ocean-lounge.png", note: "Four guests · Butler service" },
+  { name: "Beachfront Suite", price: "From $650 / night", image: "./images/ocean-suite.png", note: "Two guests · Ocean terrace" },
+  { name: "Cliffside Pool Villa", price: "From $950 / night", image: "./images/cliff-villa.png", note: "Four guests · Private infinity pool" },
+  { name: "Horizon Penthouse", price: "From $1,250 / night", image: "./images/ocean-lounge.png", note: "Four guests · Butler service" },
 ];
 
 export function App() {
@@ -153,13 +153,13 @@ export function App() {
           <a href="#experience">Discover our story <ArrowRight /></a>
         </div>
         <div className="story-photo reveal">
-          <img src="/images/ocean-lounge.png" alt="Open-air ocean lounge at Soluna Cove" />
+          <img src="./images/ocean-lounge.png" alt="Open-air ocean lounge at Soluna Cove" />
           <span>Pacific light<br />island time</span>
         </div>
       </section>
 
       <section className="featured" id="experience">
-        <img className="featured-photo reveal" src="/images/ocean-suite.png" alt="Oceanview Pool Villa bedroom" />
+        <img className="featured-photo reveal" src="./images/ocean-suite.png" alt="Oceanview Pool Villa bedroom" />
         <div className="featured-copy reveal">
           <p className="kicker">Featured stay</p>
           <h2>Oceanview<br /><em>pool villa.</em></h2>
@@ -197,7 +197,7 @@ export function App() {
       </section>
 
       <section className="experience-banner">
-        <img src="/images/cliff-villa.png" alt="Soluna Cove at blue hour" />
+        <img src="./images/cliff-villa.png" alt="Soluna Cove at blue hour" />
         <div className="banner-shade" />
         <div className="reveal">
           <Star size={27} weight="fill" />

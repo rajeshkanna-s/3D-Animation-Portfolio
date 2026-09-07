@@ -34,7 +34,7 @@ const EQUIPMENT_ROSTER = [
     metric: '98.4% Load Precision',
     price: 3400.00,
     features: 'Dynamic electromagnetic resistance, 1000Hz strain-gauge load sampling, automated spotter arrest.',
-    image: '/hero-fitness.jpg'
+    image: './hero-fitness.jpg'
   },
   {
     id: 'veloform-aero',
@@ -43,7 +43,7 @@ const EQUIPMENT_ROSTER = [
     metric: '±0.5% Power Accuracy',
     price: 2200.00,
     features: 'Direct-drive magnetic flywheel, VO2 max estimation engine, aerodynamic carbon-monocoque chassis.',
-    image: '/hero-fitness.jpg'
+    image: './hero-fitness.jpg'
   },
   {
     id: 'hypertread-x9',
@@ -52,7 +52,7 @@ const EQUIPMENT_ROSTER = [
     metric: '0-25 MPH Instant Response',
     price: 3800.00,
     features: 'Vulcanized rubber slat track, multi-axis force plates measuring ground contact asymmetry in real-time.',
-    image: '/hero-fitness.jpg'
+    image: './hero-fitness.jpg'
   },
   {
     id: 'isopod-recovery',
@@ -61,7 +61,7 @@ const EQUIPMENT_ROSTER = [
     metric: '-42% Muscle Soreness',
     price: 4500.00,
     features: 'Full-spectrum near/far infrared photobiomodulation, pneumatic compression sleeve docking.',
-    image: '/hero-fitness.jpg'
+    image: './hero-fitness.jpg'
   }
 ];
 

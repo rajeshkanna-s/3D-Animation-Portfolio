@@ -18,7 +18,7 @@ const SNEAKER_MODELS = [
     name: 'ROOTSOLE Terra Runner • Sage Forest',
     price: 165.00,
     color: 'Sage / Terracotta / Stone',
-    image: '/hero-sneaker.jpg',
+    image: './hero-sneaker.jpg',
     description: 'Our iconic daily trainer constructed with organic eucalyptus mesh, vegetable-tanned suede, and natural rubber traction lugs.'
   },
   {
@@ -26,7 +26,7 @@ const SNEAKER_MODELS = [
     name: 'ROOTSOLE Terra Runner • Dune Clay',
     price: 165.00,
     color: 'Dune / Warm Ochre',
-    image: '/hero-sneaker.jpg',
+    image: './hero-sneaker.jpg',
     description: 'Earth-toned edition inspired by canyon rock strata. Features anatomical cork cushioning and breathable recycled knit lining.'
   },
   {
@@ -34,7 +34,7 @@ const SNEAKER_MODELS = [
     name: 'ROOTSOLE Terra Runner • Obsidian Stone',
     price: 175.00,
     color: 'Obsidian / Raw Ash',
-    image: '/hero-sneaker.jpg',
+    image: './hero-sneaker.jpg',
     description: 'Triple-density all-weather edition treated with plant-based water repellent and high-traction FSC-certified wild rubber.'
   }
 ];
@@ -239,7 +239,7 @@ export default function App() {
                 transform: `perspective(1000px) rotateY(${mousePos.x * 4 + rotationAngle * 0.2}deg) rotateX(${-mousePos.y * 4}deg)`
               }}
             >
-              <img src="/hero-sneaker.jpg" alt="ROOTSOLE Terra Runner" />
+              <img src="./hero-sneaker.jpg" alt="ROOTSOLE Terra Runner" />
             </div>
           </div>
 

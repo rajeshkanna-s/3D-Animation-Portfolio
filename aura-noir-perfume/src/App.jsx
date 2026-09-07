@@ -23,10 +23,10 @@ import {
 } from "@phosphor-icons/react";
 
 const PRODUCTS = [
-  { id: "obsidian", name: "Obsidian", family: "Woody · Amber · Oud", concentration: "Extrait de Parfum", price: 195, image: "/images/obsidian.png", note: "A deep, resinous trail of aged oud softened by amber and smoked violet." },
-  { id: "lumiere", name: "Lumière", family: "Citrus · Jasmine · Musk", concentration: "Eau de Parfum", price: 185, image: "/images/lumiere.png", note: "Sunlit bergamot and jasmine settle into a veil of luminous white musk." },
-  { id: "noir-rose", name: "Noir Rose", family: "Rose · Patchouli · Amber", concentration: "Extrait de Parfum", price: 205, image: "/images/noir-rose.png", note: "Velvet rose absolute opens over patchouli, plum skin and warm labdanum." },
-  { id: "blanche", name: "Blanche", family: "Vanilla · Musk · Sandalwood", concentration: "Eau de Parfum", price: 185, image: "/images/blanche.png", note: "A quiet skin scent of vanilla bean, pearl musk and creamy sandalwood." },
+  { id: "obsidian", name: "Obsidian", family: "Woody · Amber · Oud", concentration: "Extrait de Parfum", price: 195, image: "./images/obsidian.png", note: "A deep, resinous trail of aged oud softened by amber and smoked violet." },
+  { id: "lumiere", name: "Lumière", family: "Citrus · Jasmine · Musk", concentration: "Eau de Parfum", price: 185, image: "./images/lumiere.png", note: "Sunlit bergamot and jasmine settle into a veil of luminous white musk." },
+  { id: "noir-rose", name: "Noir Rose", family: "Rose · Patchouli · Amber", concentration: "Extrait de Parfum", price: 205, image: "./images/noir-rose.png", note: "Velvet rose absolute opens over patchouli, plum skin and warm labdanum." },
+  { id: "blanche", name: "Blanche", family: "Vanilla · Musk · Sandalwood", concentration: "Eau de Parfum", price: 185, image: "./images/blanche.png", note: "A quiet skin scent of vanilla bean, pearl musk and creamy sandalwood." },
 ];
 
 const NOTES = [
@@ -127,7 +127,7 @@ export function App() {
 
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
-          <img className="hero-image" src="/images/hero-obsidian.png" alt="Amber perfume flacon illuminated on black obsidian" />
+          <img className="hero-image" src="./images/hero-obsidian.png" alt="Amber perfume flacon illuminated on black obsidian" />
           <div className="hero-copy">
             <p className="eyebrow">The art of attraction</p>
             <h1 id="hero-title">Scent is your silent <em>signature.</em></h1>
@@ -163,7 +163,7 @@ export function App() {
         </Reveal>
 
         <Reveal as="section" id="story" className="story-section" aria-labelledby="story-title">
-          <div className="story-image-wrap"><img src="/images/atelier-craft.png" alt="Perfumer measuring amber essence with a glass pipette" /></div>
+          <div className="story-image-wrap"><img src="./images/atelier-craft.png" alt="Perfumer measuring amber essence with a glass pipette" /></div>
           <div className="story-copy">
             <p className="eyebrow">Our story</p><h2 id="story-title">Crafted with passion.<br /><em>Rooted in time.</em></h2>
             <p>In our Grasse atelier, old-world extraction meets modern precision. Each fragrance rests for twelve weeks before it is filtered, hand-filled and numbered.</p>
@@ -177,7 +177,7 @@ export function App() {
         </Reveal>
 
         <Reveal as="section" id="ingredients" className="notes-section" aria-labelledby="notes-title">
-          <img className="notes-image" src="/images/ingredients.png" alt="Rose, bergamot, oud, amber resin and vanilla on a dark perfumer's table" />
+          <img className="notes-image" src="./images/ingredients.png" alt="Rose, bergamot, oud, amber resin and vanilla on a dark perfumer's table" />
           <div className="notes-content">
             <div className="section-heading"><p className="eyebrow">The art of composition</p><h2 id="notes-title">Signature Notes</h2><p>Natural materials selected for contrast, texture and the way they unfold over time.</p></div>
             <div className="note-tabs" role="tablist" aria-label="Signature notes">

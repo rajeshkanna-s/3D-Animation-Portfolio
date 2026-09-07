@@ -119,31 +119,31 @@ const JOURNEY_SLIDES = [
     num: 1,
     title: 'Skincare. Shaped by the Sea.',
     desc: 'The opening brand introduction showcasing our ocean origins.',
-    image: '/rituals-collection.jpg'
+    image: './rituals-collection.jpg'
   },
   {
     num: 2,
     title: 'Deep hydration. Stronger barrier. Natural glow.',
     desc: 'Clinical benefits and oceanic mineral infusion breakdown.',
-    image: '/tidal-slide3.jpg'
+    image: './tidal-slide3.jpg'
   },
   {
     num: 3,
     title: 'Pure ingredients. Powerful results.',
     desc: 'Bio-fermented kelp, blue spirulina, and ionic electrolytes.',
-    image: '/tidal-slide4.jpg'
+    image: './tidal-slide4.jpg'
   },
   {
     num: 4,
     title: 'Rituals inspired by the tides.',
     desc: 'Daily 4-step morning and evening marine skincare rituals.',
-    image: '/tidal-slide5.jpg'
+    image: './tidal-slide5.jpg'
   },
   {
     num: 5,
     title: 'Website Design System',
     desc: 'The complete architectural design system and visual component library.',
-    image: '/design-system.jpg'
+    image: './design-system.jpg'
   }
 ];
 
@@ -253,7 +253,7 @@ export default function App() {
         <div className="ds-hero-center-visual">
           <div className="bottle-pedestal-scene">
             <img 
-              src="/design-system.jpg" 
+              src="./design-system.jpg" 
               alt="Tidal Veil 3D Serum on Plinth with Glass Ribbon" 
               className="hero-reference-crop"
             />
@@ -572,7 +572,7 @@ export default function App() {
                   
                   <div className="product-bottle-visual-wrapper">
                     <img 
-                      src="/rituals-collection.jpg" 
+                      src="./rituals-collection.jpg" 
                       alt="Mineral Hydration Serum" 
                       className="product-crop-img"
                     />
@@ -651,7 +651,7 @@ export default function App() {
 
             <div className="packaging-banner-composite">
               <div className="pkg-slice slice-glass">
-                <div className="pkg-slice-img" style={{ backgroundImage: `url('/design-system.jpg')`, backgroundPosition: '15% 20%' }} />
+                <div className="pkg-slice-img" style={{ backgroundImage: `url('./design-system.jpg')`, backgroundPosition: '15% 20%' }} />
                 <div className="pkg-slice-overlay">
                   <span className="pkg-slice-title">CRYSTAL GLASS</span>
                   <p className="pkg-slice-desc">Recyclable glass with a soft seafoam tint.</p>
@@ -659,7 +659,7 @@ export default function App() {
               </div>
 
               <div className="pkg-slice slice-metal">
-                <div className="pkg-slice-img" style={{ backgroundImage: `url('/design-system.jpg')`, backgroundPosition: '45% 20%' }} />
+                <div className="pkg-slice-img" style={{ backgroundImage: `url('./design-system.jpg')`, backgroundPosition: '45% 20%' }} />
                 <div className="pkg-slice-overlay">
                   <span className="pkg-slice-title">BRUSHED METAL</span>
                   <p className="pkg-slice-desc">Cap with a satin finish for a premium feel.</p>
@@ -667,7 +667,7 @@ export default function App() {
               </div>
 
               <div className="pkg-slice slice-label">
-                <div className="pkg-slice-img" style={{ backgroundImage: `url('/design-system.jpg')`, backgroundPosition: '70% 20%' }} />
+                <div className="pkg-slice-img" style={{ backgroundImage: `url('./design-system.jpg')`, backgroundPosition: '70% 20%' }} />
                 <div className="pkg-slice-overlay">
                   <span className="pkg-slice-title">MINERAL HYDRATION SERUM</span>
                   <p className="pkg-slice-desc">Embossed waterproof label with tactile micro-texture.</p>
@@ -675,7 +675,7 @@ export default function App() {
               </div>
 
               <div className="pkg-slice slice-ribbon">
-                <div className="pkg-slice-img" style={{ backgroundImage: `url('/design-system.jpg')`, backgroundPosition: '90% 20%' }} />
+                <div className="pkg-slice-img" style={{ backgroundImage: `url('./design-system.jpg')`, backgroundPosition: '90% 20%' }} />
                 <div className="pkg-slice-overlay">
                   <span className="pkg-slice-title">FLUID WAVE</span>
                   <p className="pkg-slice-desc">Custom blown sculpted glass wave aesthetic.</p>

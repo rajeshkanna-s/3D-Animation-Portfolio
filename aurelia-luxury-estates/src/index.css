@@ -185,7 +185,7 @@ section, #hero, #properties, #developments, #services, #about {
   position: relative;
   min-height: 520px;
   border-radius: 28px;
-  background-image: url('/hero-sky-villa.jpg');
+  background-image: url('./hero-sky-villa.jpg');
   background-size: cover;
   background-position: center;
   padding: 60px 48px;

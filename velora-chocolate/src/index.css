@@ -364,7 +364,7 @@ section, #hero, #collections, #story, #mobile, #reviews, #contact {
   right: 0;
   bottom: 0;
   width: 62%;
-  background-image: url('/hero-chocolate.jpg');
+  background-image: url('./hero-chocolate.jpg');
   background-size: cover;
   background-position: center right;
   mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.8) 35%, black 100%);

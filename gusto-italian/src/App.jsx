@@ -181,7 +181,7 @@ export default function App() {
             }}
           >
             <img 
-              src="/hero-pasta.jpg" 
+              src="./hero-pasta.jpg" 
               alt="Artisan Handmade Tagliatelle" 
               className="pasta-hero-img"
             />
@@ -347,7 +347,7 @@ export default function App() {
             </div>
 
             <div className="about-image-card">
-              <img src="/hero-pasta.jpg" alt="Handmade Pasta Craft" className="about-thumb-img" />
+              <img src="./hero-pasta.jpg" alt="Handmade Pasta Craft" className="about-thumb-img" />
               <div className="chef-quote-badge">
                 <p>“Simplicity is the highest form of sophistication.”</p>
                 <span>— Chef Marco Bellini</span>

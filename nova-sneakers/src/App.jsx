@@ -28,7 +28,7 @@ const PRODUCTS = [
     subtitle: 'PREMIUM PERFORMANCE SNEAKER',
     price: 220.00,
     color: 'Obsidian Black / Electric Blue',
-    image: '/hero-sneaker.jpg',
+    image: './hero-sneaker.jpg',
     features: ['Engineered Mesh Upper', 'Reactive Sole Unit', 'NØVA Lace System', 'Lightweight Support Cage'],
     tag: 'LIMITED DROP'
   },
@@ -38,7 +38,7 @@ const PRODUCTS = [
     subtitle: 'TITANIUM AERO RUNNER',
     price: 210.00,
     color: 'Titanium Silver / Ice Cyan',
-    image: '/hero-sneaker.jpg',
+    image: './hero-sneaker.jpg',
     features: ['Ultra-light Monocoque', 'Hydrophobic Mesh', 'Carbon Propulsion Plate', 'Zero-G Foam'],
     tag: 'NEW RELEASE'
   },
@@ -48,7 +48,7 @@ const PRODUCTS = [
     subtitle: 'STEALTH CARBON HYBRID',
     price: 230.00,
     color: 'Stealth Carbon / Amber Flare',
-    image: '/hero-sneaker.jpg',
+    image: './hero-sneaker.jpg',
     features: ['High-Abrasion Outsole', 'Kevlar Reinforced Weave', 'Adaptive Midsole', 'Reflective Accents'],
     tag: 'PRO EDITION'
   }
@@ -295,7 +295,7 @@ export default function App() {
               }}
             >
               <img 
-                src="/hero-sneaker.jpg" 
+                src="./hero-sneaker.jpg" 
                 alt="NØVA-01 Cyber Sneaker" 
                 className="sneaker-hero-img"
               />
@@ -559,7 +559,7 @@ export default function App() {
           {/* 4 EXPLODED BLUEPRINT LAYERS */}
           <div className="exploded-blueprint-container">
             <div className="exploded-visual-column">
-              <img src="/hero-sneaker.jpg" alt="Exploded Sneaker Schematic" className="schematic-img" />
+              <img src="./hero-sneaker.jpg" alt="Exploded Sneaker Schematic" className="schematic-img" />
             </div>
 
             <div className="exploded-layers-column">
@@ -610,7 +610,7 @@ export default function App() {
                 </div>
                 <h4 className="app-screen-title">Saved Items</h4>
                 <div className="app-item-card">
-                  <img src="/hero-sneaker.jpg" alt="Saved" className="app-thumb" />
+                  <img src="./hero-sneaker.jpg" alt="Saved" className="app-thumb" />
                   <div>
                     <strong>NØVA-01</strong>
                     <span>Black / Electric Blue</span>
@@ -938,7 +938,7 @@ export default function App() {
               <button className="btn-close-drawer" onClick={() => setIsVideoModalOpen(false)}>✕</button>
             </div>
             <div className="video-simulation-canvas">
-              <img src="/hero-sneaker.jpg" alt="Simulation" className="sim-img" />
+              <img src="./hero-sneaker.jpg" alt="Simulation" className="sim-img" />
               <div className="sim-telemetry-hud">
                 <span className="hud-pulse">● 1000Hz SENSOR SAMPLING ACTIVE</span>
                 <span className="hud-stat">IMPACT ABSORPTION: 99.4%</span>

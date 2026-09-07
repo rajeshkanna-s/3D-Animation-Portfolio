@@ -32,7 +32,7 @@ const projects = [
     price: "From AED 1.8M",
     status: "New launch",
     category: "Residences",
-    image: "/images/aurelia-residences.png",
+    image: "./images/aurelia-residences.png",
     facts: ["2–4 Bedrooms", "1,120–3,800 sq ft", "Q4 2028"],
   },
   {
@@ -41,7 +41,7 @@ const projects = [
     price: "From AED 3.6M",
     status: "Ready to move",
     category: "Villas",
-    image: "/images/aurelia-villas.png",
+    image: "./images/aurelia-villas.png",
     facts: ["4–6 Bedrooms", "4,200–8,100 sq ft", "Private gardens"],
   },
   {
@@ -50,7 +50,7 @@ const projects = [
     price: "From AED 2.2M",
     status: "In progress",
     category: "Residences",
-    image: "/images/aurelia-skyline.png",
+    image: "./images/aurelia-skyline.png",
     facts: ["1–4 Bedrooms", "City & water views", "Q2 2029"],
   },
 ];
@@ -422,7 +422,7 @@ export function App() {
         <section className="hero" id="home">
           <img
             className="hero-image"
-            src="/images/aurelia-hero.png"
+            src="./images/aurelia-hero.png"
             alt="Modern Aurelia waterfront residences at dusk"
             style={{ transform: "translate3d(0, " + heroShift + "px, 0) scale(1.06)" }}
           />
@@ -464,14 +464,14 @@ export function App() {
             <Button variant="outline" href="#masterplan">Learn more about us</Button>
           </div>
           <TiltCard className="featured-card reveal">
-            <img src="/images/aurelia-heights.png" alt="Aurelia Heights villa and reflecting pool" />
+            <img src="./images/aurelia-heights.png" alt="Aurelia Heights villa and reflecting pool" />
             <div className="featured-topline">Featured project</div>
             <div className="featured-copy">
               <div>
                 <h3>Aurelia Heights</h3>
                 <p>Luxury Apartments · Downtown</p>
               </div>
-              <button onClick={() => setProjectOpen({ ...projects[1], name: "Aurelia Heights", image: "/images/aurelia-heights.png", location: "Downtown", price: "From AED 4.8M" })}>
+              <button onClick={() => setProjectOpen({ ...projects[1], name: "Aurelia Heights", image: "./images/aurelia-heights.png", location: "Downtown", price: "From AED 4.8M" })}>
                 View project <ArrowRight size={18} />
               </button>
             </div>
@@ -544,7 +544,7 @@ export function App() {
 
         <section className="masterplan section" id="masterplan">
           <div className="masterplan-image reveal">
-            <img src="/images/aurelia-amenities.png" alt="Waterfront infinity pool and city skyline" />
+            <img src="./images/aurelia-amenities.png" alt="Waterfront infinity pool and city skyline" />
             <span>01 / Waterfront living</span>
           </div>
           <div className="masterplan-copy reveal">
@@ -565,7 +565,7 @@ export function App() {
         </section>
 
         <section className="amenity-banner">
-          <img src="/images/aurelia-amenities.png" alt="Aurelia residents' waterfront pool deck" />
+          <img src="./images/aurelia-amenities.png" alt="Aurelia residents' waterfront pool deck" />
           <div className="amenity-panel reveal">
             <p className="eyebrow">Crafted around you</p>
             <h2>A slower rhythm, at the center of everything.</h2>
@@ -679,7 +679,7 @@ export function App() {
         <div className="modal-backdrop" onMouseDown={() => setOverviewOpen(false)} role="presentation">
           <div className="overview-modal" role="dialog" aria-modal="true" aria-label="Aurelia overview" onMouseDown={(event) => event.stopPropagation()}>
             <button className="modal-close light-close" onClick={() => setOverviewOpen(false)} aria-label="Close overview"><X size={21} /></button>
-            <img src="/images/aurelia-hero.png" alt="Aurelia waterfront community" />
+            <img src="./images/aurelia-hero.png" alt="Aurelia waterfront community" />
             <div>
               <span><Play size={21} weight="fill" /></span>
               <p className="eyebrow">Aurelia in 60 seconds</p>
