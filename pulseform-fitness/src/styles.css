@@ -208,6 +208,9 @@ section, #hero, #telemetry, #equipment, #studios, #membership {
   border-radius: 28px;
   border: 1px solid var(--bg-card-border);
   background-color: #061117;
+  background-image: url('./hero-fitness.jpg'), url('../hero-fitness.jpg'), url('./assets/hero-fitness.jpg');
+  background-size: cover;
+  background-position: center right;
   overflow: hidden;
   padding: 56px;
   display: flex;
@@ -222,18 +225,20 @@ section, #hero, #telemetry, #equipment, #studios, #membership {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 65%;
-  background-image: url('../hero-fitness.jpg'), url('./hero-fitness.jpg');
+  width: 70%;
+  background-image: url('./hero-fitness.jpg'), url('../hero-fitness.jpg'), url('./assets/hero-fitness.jpg');
   background-size: cover;
   background-position: center right;
   pointer-events: none;
+  z-index: 1;
 }
 
 .pulse-hero-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(4, 9, 12, 0.98) 0%, rgba(4, 9, 12, 0.85) 45%, rgba(4, 9, 12, 0.2) 100%);
+  background: linear-gradient(90deg, rgba(4, 9, 12, 0.95) 0%, rgba(4, 9, 12, 0.78) 45%, rgba(4, 9, 12, 0.2) 100%);
   pointer-events: none;
+  z-index: 1;
 }
 
 .pulse-hero-content {
@@ -977,7 +982,20 @@ section, #hero, #telemetry, #equipment, #studios, #membership {
 
 @media (max-width: 1024px) {
   .pulse-nav-links { display: none; }
-  .pulse-hero-backdrop { display: none; }
+  .pulse-hero-stage {
+    padding: 36px 24px;
+    min-height: 520px;
+    background-position: center;
+  }
+  .pulse-hero-backdrop {
+    display: block;
+    width: 100%;
+    opacity: 0.35;
+    background-position: center;
+  }
+  .pulse-hero-gradient {
+    background: linear-gradient(180deg, rgba(4, 9, 12, 0.94) 0%, rgba(4, 9, 12, 0.82) 100%);
+  }
   .telemetry-calculator-card { grid-template-columns: 1fr; }
   .studios-grid { grid-template-columns: 1fr; }
   .membership-grid { grid-template-columns: 1fr; }

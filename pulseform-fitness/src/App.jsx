@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import heroFitnessImg from './assets/hero-fitness.jpg';
 import {
   Activity,
   Heart,
@@ -34,7 +35,7 @@ const EQUIPMENT_ROSTER = [
     metric: '98.4% Load Precision',
     price: 3400.00,
     features: 'Dynamic electromagnetic resistance, 1000Hz strain-gauge load sampling, automated spotter arrest.',
-    image: './hero-fitness.jpg'
+    image: heroFitnessImg
   },
   {
     id: 'veloform-aero',
@@ -43,7 +44,7 @@ const EQUIPMENT_ROSTER = [
     metric: '±0.5% Power Accuracy',
     price: 2200.00,
     features: 'Direct-drive magnetic flywheel, VO2 max estimation engine, aerodynamic carbon-monocoque chassis.',
-    image: './hero-fitness.jpg'
+    image: heroFitnessImg
   },
   {
     id: 'hypertread-x9',
@@ -52,7 +53,7 @@ const EQUIPMENT_ROSTER = [
     metric: '0-25 MPH Instant Response',
     price: 3800.00,
     features: 'Vulcanized rubber slat track, multi-axis force plates measuring ground contact asymmetry in real-time.',
-    image: './hero-fitness.jpg'
+    image: heroFitnessImg
   },
   {
     id: 'isopod-recovery',
@@ -61,7 +62,7 @@ const EQUIPMENT_ROSTER = [
     metric: '-42% Muscle Soreness',
     price: 4500.00,
     features: 'Full-spectrum near/far infrared photobiomodulation, pneumatic compression sleeve docking.',
-    image: './hero-fitness.jpg'
+    image: heroFitnessImg
   }
 ];
 
@@ -179,8 +180,15 @@ export function App() {
       </header>
 
       {/* 2. HERO STAGE WITH 3D KINETIC ARTWORK */}
-      <section id="hero" className="pulse-hero-stage">
-        <div className="pulse-hero-backdrop" style={{ backgroundImage: "url('./hero-fitness.jpg')" }} />
+      <section 
+        id="hero" 
+        className="pulse-hero-stage"
+        style={{ backgroundImage: `url(${heroFitnessImg})` }}
+      >
+        <div 
+          className="pulse-hero-backdrop" 
+          style={{ backgroundImage: `url(${heroFitnessImg})` }} 
+        />
         <div className="pulse-hero-gradient" />
 
         <div className="pulse-hero-content">
