@@ -223,7 +223,7 @@ section, #hero, #telemetry, #equipment, #studios, #membership {
   right: 0;
   bottom: 0;
   width: 65%;
-  background-image: url('./hero-fitness.jpg');
+  background-image: url('../hero-fitness.jpg'), url('./hero-fitness.jpg');
   background-size: cover;
   background-position: center right;
   pointer-events: none;

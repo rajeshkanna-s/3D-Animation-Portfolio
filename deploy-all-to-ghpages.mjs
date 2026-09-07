@@ -118,6 +118,29 @@ async function main() {
     }
 
     if (fs.existsSync(outDir)) {
+      // Mirror assets for CSS compatibility (ensures ./image.jpg in CSS assets/index.css works)
+      const assetsDir = path.join(outDir, 'assets');
+      if (!fs.existsSync(assetsDir)) fs.mkdirSync(assetsDir, { recursive: true });
+      for (const item of fs.readdirSync(outDir)) {
+        if (item === 'index.html' || item === 'assets') continue;
+        const srcPath = path.join(outDir, item);
+        const destPath = path.join(assetsDir, item);
+        try {
+          fs.cpSync(srcPath, destPath, { recursive: true, force: true });
+        } catch (e) {}
+      }
+      // Support ./assets/ reference from inside assets/
+      const nestedAssetsDir = path.join(assetsDir, 'assets');
+      if (!fs.existsSync(nestedAssetsDir)) {
+        fs.mkdirSync(nestedAssetsDir, { recursive: true });
+        for (const item of fs.readdirSync(assetsDir)) {
+          if (item === 'assets') continue;
+          try {
+            fs.cpSync(path.join(assetsDir, item), path.join(nestedAssetsDir, item), { recursive: true, force: true });
+          } catch (e) {}
+        }
+      }
+
       const targetSubDir = path.join(distSiteDir, p.name);
       fs.cpSync(outDir, targetSubDir, { recursive: true });
       console.log(`  ✅ Copied ${p.name} build to dist_site/${p.name}`);

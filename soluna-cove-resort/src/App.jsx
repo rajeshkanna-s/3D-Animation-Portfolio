@@ -124,7 +124,7 @@ export function App() {
       )}
 
       <section className="hero" id="top">
-        <div className="hero-photo" />
+        <div className="hero-photo" style={{ backgroundImage: "url('./images/hero-villa.png')" }} />
         <div className="hero-content reveal">
           <p className="kicker">A private world by the sea</p>
           <h1>Escape into<br /><em>coastal luxury.</em></h1>

@@ -138,7 +138,11 @@ export default function App() {
       </header>
 
       {/* 2. HERO STAGE */}
-      <section className="aurelia-hero-stage" id="hero">
+      <section 
+        className="aurelia-hero-stage" 
+        id="hero"
+        style={{ backgroundImage: "url('./hero-sky-villa.jpg')" }}
+      >
         <div className="aurelia-hero-left">
           <div className="hero-tag">
             <div className="gold-line" />

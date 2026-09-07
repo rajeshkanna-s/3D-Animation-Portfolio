@@ -180,7 +180,7 @@ export function App() {
 
       {/* 2. HERO STAGE WITH 3D KINETIC ARTWORK */}
       <section id="hero" className="pulse-hero-stage">
-        <div className="pulse-hero-backdrop" />
+        <div className="pulse-hero-backdrop" style={{ backgroundImage: "url('./hero-fitness.jpg')" }} />
         <div className="pulse-hero-gradient" />
 
         <div className="pulse-hero-content">

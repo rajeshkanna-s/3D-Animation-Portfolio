@@ -225,7 +225,7 @@ export function App() {
 
       {/* 2. HERO STAGE */}
       <section id="hero" className="nocturne-hero-stage">
-        <div className="nocturne-hero-backdrop" />
+        <div className="nocturne-hero-backdrop" style={{ backgroundImage: "url('./hero-dining.jpg')" }} />
         <div className="hero-gradient-overlay" />
 
         <div className="nocturne-hero-content">

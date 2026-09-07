@@ -263,7 +263,7 @@ export default function App() {
 
       {/* 2. HERO LUXURY VIEW (SLIDE 1) */}
       <section id="hero" className="velora-hero-stage">
-        <div className="velora-backdrop-art" />
+        <div className="velora-backdrop-art" style={{ backgroundImage: "url('./hero-chocolate.jpg')" }} />
 
         <div className="velora-hero-left">
           <div className="velora-tag">
