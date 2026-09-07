@@ -156,6 +156,7 @@ const REVIEWS = [
 
 export default function App() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [activeStep, setActiveStep] = useState(0);
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -354,7 +355,7 @@ export default function App() {
                 <ArrowRight size={14} />
               </button>
             </div>
-            <img src="/curated-gift-banner.jpg" alt="Curated Gift Box" className="gift-card-img" />
+            <img src="/velora-gift-box.jpg?v=2" alt="Curated Gift Box" className="gift-card-img" />
           </div>
         </div>
 
@@ -431,6 +432,7 @@ export default function App() {
         <div className="story-split-grid">
           <div className="story-text-col">
             <div className="velora-tag" style={{ marginBottom: 12 }}>
+              <Sparkles size={14} color="#D4A373" />
               <span>OUR PROCESS • BEAN TO BAR</span>
             </div>
             <h2 className="section-title-serif">
@@ -438,12 +440,16 @@ export default function App() {
               <span className="gold-gradient-text">Layers Of Flavor.</span>
             </h2>
             <p className="section-sub-muted" style={{ marginBottom: 28 }}>
-              Every Velora chocolate is a journey of precision, passion, and the world’s finest ingredients.
+              Every Velora chocolate is an artisanal journey of precision, passion, and the world’s rarest single-origin cacao.
             </p>
 
             <div className="flavor-steps-list">
-              {FLAVOR_STEPS.map((step) => (
-                <div key={step.step} className="flavor-step-card">
+              {FLAVOR_STEPS.map((step, idx) => (
+                <div 
+                  key={step.step} 
+                  className={`flavor-step-card ${activeStep === idx ? 'active-step' : ''}`}
+                  onClick={() => setActiveStep(idx)}
+                >
                   <span className="step-num-circle">{step.step}</span>
                   <div>
                     <h4 className="step-title">{step.title}</h4>
@@ -455,7 +461,13 @@ export default function App() {
           </div>
 
           <div className="story-image-col">
-            <img src="/story-craft-layers.jpg" alt="Crafted in layers of flavor" className="story-craft-full-img" />
+            <div className="story-image-frame">
+              <img src="/story-craft-montage.jpg?v=2" alt="Artisanal Bean to Bar Craftsmanship" className="story-craft-full-img" />
+              <div className="image-overlay-caption">
+                <span className="caption-dot" />
+                <span>Single-Estate Cacao • 72h Conching • 24k Gold Finish</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -478,31 +490,57 @@ export default function App() {
 
             <div className="mobile-perks-list">
               <div className="mobile-perk-item">
-                <Truck size={20} color="#D4A373" />
+                <div className="perk-icon-wrap">
+                  <Truck size={22} color="#D4A373" />
+                </div>
                 <div>
                   <h4>Same-Day Manhattan Delivery</h4>
-                  <p>Fast, reliable, refrigerated delivery fresh to your door.</p>
+                  <p>Fast, reliable, refrigerated delivery fresh to your door within 2 hours.</p>
                 </div>
               </div>
               <div className="mobile-perk-item">
-                <Gift size={20} color="#D4A373" />
+                <div className="perk-icon-wrap">
+                  <Gift size={22} color="#D4A373" />
+                </div>
                 <div>
                   <h4>Send As A Curated Gift</h4>
-                  <p>Beautifully wrapped with your personalized satin note card.</p>
+                  <p>Beautifully wrapped with your personalized gold-embossed satin note card.</p>
                 </div>
               </div>
               <div className="mobile-perk-item">
-                <Award size={20} color="#D4A373" />
+                <div className="perk-icon-wrap">
+                  <Award size={22} color="#D4A373" />
+                </div>
                 <div>
                   <h4>Live Courier Tracking</h4>
-                  <p>Real-time delivery progress updates right to your phone.</p>
+                  <p>Real-time GPS temperature & delivery progress updates right to your phone.</p>
                 </div>
               </div>
+            </div>
+
+            {/* App Store Badges */}
+            <div className="app-download-row">
+              <button onClick={() => showToast('Velora iOS App in App Store')} className="btn-app-store">
+                <Smartphone size={18} />
+                <div className="btn-app-text">
+                  <span className="app-sub">Download on the</span>
+                  <span className="app-main">App Store</span>
+                </div>
+              </button>
+              <button onClick={() => showToast('Velora Android App in Google Play')} className="btn-app-store">
+                <Package size={18} />
+                <div className="btn-app-text">
+                  <span className="app-sub">Get it on</span>
+                  <span className="app-main">Google Play</span>
+                </div>
+              </button>
             </div>
           </div>
 
           <div className="mobile-image-col">
-            <img src="/mobile-experience.jpg" alt="Velora Mobile App" className="mobile-showcase-img" />
+            <div className="mobile-showcase-frame">
+              <img src="/velora-mobile-app.jpg?v=2" alt="Velora Mobile App Experience" className="mobile-showcase-img" />
+            </div>
           </div>
         </div>
       </section>

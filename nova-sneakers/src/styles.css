@@ -59,15 +59,15 @@ html {
   border-bottom: 1px solid var(--border-cyan);
 }
 
-.scroll-page-block {
-  scroll-margin-top: 140px;
+.scroll-page-block, #section-01, #section-02, #section-03, #section-04, #section-05 {
+  scroll-margin-top: 120px;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 /* WINDOW TOP BAR */
 .window-top-bar {
   background: #090C10;
-  padding: 12px 24px;
+  padding: 8px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -107,9 +107,9 @@ html {
   gap: 8px;
   background: #121824;
   border: 1px solid var(--border-subtle);
-  padding: 6px 28px;
+  padding: 4px 20px;
   border-radius: 8px;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--text-dim);
   font-family: 'JetBrains Mono', monospace;
 }
@@ -122,22 +122,23 @@ html {
 .reload-icon:hover { color: var(--accent-cyan); }
 
 .page-indicator-pill {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   color: var(--accent-cyan);
   background: rgba(0, 240, 255, 0.1);
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 6px;
   border: 1px solid var(--border-cyan);
 }
 
-/* NAVBAR */
+/* SLIM NAVBAR */
 .nova-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 36px;
+  height: 52px;
+  padding: 6px 28px;
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -1688,6 +1689,148 @@ html {
 .hud-stat {
   font-size: 0.65rem;
   color: #FFF;
+}
+
+/* SLIM WINDOW FOOTER HUD */
+.nova-window-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background: #090C10;
+  border-top: 1px solid var(--border-subtle);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.hud-left-geo .hud-sku-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #FFF;
+  letter-spacing: 0.12em;
+}
+
+.hud-left-geo .slashes-small {
+  color: var(--accent-cyan);
+}
+
+.hud-left-geo .hud-tagline {
+  font-size: 0.58rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  margin-top: 2px;
+}
+
+.hud-left-geo .coords-text {
+  font-size: 0.52rem;
+  color: var(--accent-cyan);
+  opacity: 0.8;
+}
+
+.launching-hud-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.hud-title-top {
+  font-size: 0.58rem;
+  color: var(--text-dim);
+  letter-spacing: 0.18em;
+}
+
+.hud-timer-digits {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.digit-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #121824;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 4px 6px;
+  min-width: 32px;
+}
+
+.digit-block span {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
+}
+
+.digit-block label {
+  font-size: 0.45rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+.colon {
+  color: var(--text-dim);
+  font-weight: 800;
+}
+
+.drop-date-bottom {
+  font-size: 0.52rem;
+  color: var(--accent-cyan);
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.hud-page-stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stepper-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.step-btn-dot {
+  background: #121824;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-dim);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.step-btn-dot.active {
+  background: var(--accent-cyan);
+  color: #000;
+  border-color: var(--accent-cyan);
+}
+
+.btn-step-prev, .btn-step-next {
+  background: none;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-dim);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.btn-step-prev:hover:not(:disabled), .btn-step-next:hover:not(:disabled) {
+  color: #FFF;
+  border-color: var(--accent-cyan);
+}
+
+.btn-step-prev:disabled, .btn-step-next:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 /* TOAST */

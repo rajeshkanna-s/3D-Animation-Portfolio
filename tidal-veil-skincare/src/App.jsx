@@ -198,15 +198,18 @@ export default function App() {
         </div>
       )}
 
-      {/* FROZEN TOP NAVIGATION HEADER */}
+      {/* SLIM FROZEN TOP NAVIGATION HEADER */}
       <header className="tidal-frozen-header">
-        <div className="ds-brand-lockup">
-          <span className="ds-brand-name">TIDAL VEIL</span>
-          <span className="ds-brand-sub">OCEAN MINERAL SKINCARE</span>
-        </div>
+        <a href="#specimens" className="ds-brand-lockup-link">
+          <Droplet style={{ width: 18, height: 18, color: '#5F8180' }} />
+          <div>
+            <span className="ds-brand-name">TIDAL VEIL</span>
+            <span className="ds-brand-sub">OCEAN MINERAL</span>
+          </div>
+        </a>
 
         <nav className="tidal-nav-links">
-          <a href="#specimens" className="t-nav-link">DESIGN SYSTEM</a>
+          <a href="#specimens" className="t-nav-link">SPECIMENS</a>
           <a href="#palette" className="t-nav-link">PALETTE</a>
           <a href="#typography" className="t-nav-link">TYPOGRAPHY</a>
           <a href="#materials" className="t-nav-link">3D MATERIALS</a>
@@ -215,7 +218,7 @@ export default function App() {
 
         <div className="tidal-header-actions">
           <button onClick={handleAddToCart} className="btn-quick-bag">
-            <ShoppingBag style={{ width: 15, height: 15 }} />
+            <ShoppingBag style={{ width: 14, height: 14 }} />
             <span>Bag ({cartCount})</span>
           </button>
         </div>
@@ -829,6 +832,30 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* SLIM FOOTER */}
+      <footer className="tidal-footer">
+        <div className="footer-top-row">
+          <div className="ds-brand-lockup-link">
+            <Droplet style={{ width: 16, height: 16, color: '#5F8180' }} />
+            <span className="ds-brand-name" style={{ fontSize: '0.95rem' }}>TIDAL VEIL</span>
+          </div>
+          <div className="footer-links-row">
+            <a href="#specimens">Specimens</a>
+            <a href="#palette">Color Palette</a>
+            <a href="#typography">Typography</a>
+            <a href="#materials">3D Textures</a>
+            <a href="#ritual">Ritual Store</a>
+          </div>
+          <div className="footer-cert-badge">
+            <Shield style={{ width: 13, height: 13, color: '#5F8180' }} />
+            <span>100% Ocean Sourced & Biodegradable</span>
+          </div>
+        </div>
+        <div className="footer-bottom-copy">
+          © 2026 TIDAL VEIL LABORATORIES INC. LIVING DESIGN SYSTEM & ARTISANAL OCEAN FORMULAS.
+        </div>
+      </footer>
 
     </div>
   );

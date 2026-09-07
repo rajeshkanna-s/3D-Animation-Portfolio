@@ -83,7 +83,12 @@ body {
   position: relative;
 }
 
-/* STICKY NAVBAR */
+/* Section scroll margins */
+section, #hero, #menu, #about, #chef, #reservation {
+  scroll-margin-top: 80px;
+}
+
+/* STICKY SLIM NAVBAR */
 .gusto-navbar {
   position: sticky;
   top: 0;
@@ -91,44 +96,55 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 36px;
-  background: rgba(252, 250, 247, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(126, 115, 104, 0.12);
+  height: 56px;
+  padding: 8px 32px;
+  background: rgba(252, 250, 247, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(126, 115, 104, 0.15);
+  box-shadow: 0 4px 20px rgba(50, 40, 30, 0.04);
 }
 
 .brand-lockup {
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.brand-lockup:hover {
+  transform: scale(1.03);
 }
 
 .brand-gusto {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--text-dark);
+  line-height: 1;
 }
 
 .brand-sub {
-  font-size: 0.58rem;
+  font-size: 0.52rem;
   letter-spacing: 0.18em;
-  color: var(--text-muted);
-  font-weight: 600;
+  color: var(--accent-terracotta);
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 2px;
 }
 
 .nav-links {
   display: flex;
-  gap: 12px;
+  align-items: center;
+  gap: 8px;
 }
 
 .nav-link-btn {
   background: none;
   border: 1px solid transparent;
   color: var(--text-muted);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   letter-spacing: 0.12em;
   font-weight: 700;
   padding: 6px 14px;
@@ -926,10 +942,16 @@ body {
 
 .gusto-site-footer {
   text-align: center;
-  padding: 40px 0 20px;
-  font-size: 0.7rem;
+  padding: 24px 20px 20px;
+  font-size: 0.72rem;
   color: var(--text-muted);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
+  border-top: 1px solid rgba(126, 115, 104, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 @media (max-width: 860px) {

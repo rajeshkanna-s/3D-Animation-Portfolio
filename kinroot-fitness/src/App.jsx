@@ -12,7 +12,6 @@ import {
   LayoutGrid, 
   Sun, 
   Moon, 
-  Sunset, 
   Sparkles, 
   X, 
   Check, 
@@ -20,7 +19,16 @@ import {
   ChevronRight,
   Flame,
   Clock,
-  Calendar
+  Calendar,
+  Compass,
+  Heart,
+  Shield,
+  Zap,
+  MapPin,
+  TrendingUp,
+  Sliders,
+  Maximize2,
+  Minimize2
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -39,22 +47,151 @@ const SCHEDULE_ITEMS = [
   { time: '05:30 PM', name: 'Terrain Endurance', cat: 'Endurance', icon: Moon, color: '#93c5fd', coach: 'Coach Elena Rostova', duration: '50 mins VO2 max tempo' }
 ];
 
+const COACHES = [
+  {
+    name: 'Marcus Vance',
+    role: 'Head of Biomechanics',
+    specialty: 'High-Velocity Eccentric Loading & Kinetic Power',
+    rating: '5.0 (340+ athletes)',
+    image: '/kinroot-slide2.jpg',
+    cert: 'CSCS · Olympic Strength Specialist'
+  },
+  {
+    name: 'Maya Lin',
+    role: 'Fascial & Breath Director',
+    specialty: 'Thoracic Mobility & Autonomic Nervous Regulation',
+    rating: '4.9 (480+ athletes)',
+    image: '/kinroot-slide3.jpg',
+    cert: 'FRCms · Diaphragmatic Mechanics'
+  },
+  {
+    name: 'Elena Rostova',
+    role: 'Altitude & VO2 Specialist',
+    specialty: 'Zone 2 Mitochondrial Density & Terrain Adaptation',
+    rating: '5.0 (290+ athletes)',
+    image: '/kinroot-slide4.jpg',
+    cert: 'EXOS · Endurance Physiology'
+  }
+];
+
+const SPACES = [
+  {
+    title: 'The Monolith Boulder Room',
+    desc: '3D volcanic stone monoliths with ambient oxygen-enriched air and biomechanically calibrated grip surfaces.',
+    tag: 'Natural Grip Dynamics',
+    bg: '/hero-adaptive.jpg'
+  },
+  {
+    title: 'Hydro-Recovery Thermal Chamber',
+    desc: 'Contrast therapy pool suite, infused mineral baths, and far-infrared sound resonance loungers.',
+    tag: 'Cellular Restoration',
+    bg: '/kinroot-slide5.jpg'
+  },
+  {
+    title: 'Kinetic Terrain Sanctuary',
+    desc: 'Undulating turf, gradient timber tracks, and zero-gravity pneumatic resistance stations.',
+    tag: 'Multi-Planar Grounding',
+    bg: '/kinroot-slide3.jpg'
+  }
+];
+
+const MEMBERSHIP_TIERS = [
+  {
+    name: 'Foundational Flow',
+    price: '$85',
+    period: '/ month',
+    desc: 'Essential adaptive training protocols and on-demand movement flows.',
+    features: [
+      'Full access to all 30+ Adaptive Programs',
+      'Daily 07:00 AM live stream flows',
+      'Kinroot telemetry & strain sync app',
+      'Standard community access'
+    ],
+    popular: false,
+    cta: 'Select Foundational'
+  },
+  {
+    name: 'Kinetic Pro',
+    price: '$180',
+    period: '/ month',
+    desc: 'Complete holistic performance system with live coach feedback and biometrics.',
+    features: [
+      'All Foundational benefits included',
+      'Bi-weekly 1-on-1 Biomechanics coaching check-in',
+      'Unlimited access to all studio broadcasts',
+      'Personalized load & HRV recovery periodization',
+      'Priority booking for Sanctuary physical spaces'
+    ],
+    popular: true,
+    cta: 'Start Pro Experience'
+  },
+  {
+    name: 'Sanctuary Residency',
+    price: '$350',
+    period: '/ month',
+    desc: 'The pinnacle of personalized kinetic wellness and physical studio sanctuary access.',
+    features: [
+      'All Pro tier privileges included',
+      'Unlimited physical sanctuary studio access',
+      'Hydro-recovery thermal chamber access',
+      'Custom bespoke movement protocol design',
+      'Dedicated elite movement specialist'
+    ],
+    popular: false,
+    cta: 'Apply for Residency'
+  }
+];
+
+const JOURNAL_POSTS = [
+  {
+    title: 'Diaphragmatic Expansion & Autonomic Nervous Reset',
+    cat: 'Respiratory Science',
+    readTime: '6 min read',
+    snippet: 'How 20 minutes of multi-dimensional ribcage expansion downregulates sympathetic stress and accelerates fascial recovery.'
+  },
+  {
+    title: 'Eccentric Velocity Loading in Multi-Planar Movement',
+    cat: 'Biomechanics',
+    readTime: '8 min read',
+    snippet: 'Why controlled deceleration across spiral vectors produces greater tendon stiffness and prevents chronic overuse injuries.'
+  },
+  {
+    title: 'Circadian Hormesis & Temperature Modulation',
+    cat: 'Cellular Health',
+    readTime: '5 min read',
+    snippet: 'Synchronizing high-intensity mechanical output with optimal core body temperature curves for peak mitochondrial output.'
+  }
+];
+
 export default function App() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedProgram, setSelectedProgram] = useState(null);
   const [isAssessmentOpen, setIsAssessmentOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
+  const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
+  const [isMenuDrawerOpen, setIsMenuDrawerOpen] = useState(false);
+  const [isLiveSyncMinimized, setIsLiveSyncMinimized] = useState(false);
+  const [isLiveSyncHidden, setIsLiveSyncHidden] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   const [activeLiveSync, setActiveLiveSync] = useState(SCHEDULE_ITEMS[0]);
+  const [newsletterEmail, setNewsletterEmail] = useState('');
 
   const showToast = (msg) => {
     setToastMessage(msg);
-    setTimeout(() => setToastMessage(''), 3000);
+    setTimeout(() => setToastMessage(''), 3500);
   };
 
   const openProgramModal = (title, subtitle, diff, cat, desc) => {
     setSelectedProgram({ title, subtitle, diff, cat, desc });
+  };
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+    confetti({ particleCount: 40, spread: 60 });
+    showToast('Subscribed to Kinroot Biomechanics Journal!');
+    setNewsletterEmail('');
   };
 
   return (
@@ -70,28 +207,39 @@ export default function App() {
 
       {/* 1. TOP NAVIGATION */}
       <header className="kinroot-nav-header">
-        <a href="#" className="kinroot-logo">KINROOT</a>
+        <a href="#" className="kinroot-logo">
+          <span className="logo-text">KINROOT</span>
+          <span className="logo-dot" />
+        </a>
 
         <nav className="kinroot-nav-links">
           <a href="#programs" className="kinroot-nav-item active">PROGRAMS</a>
-          <a href="#coaching" className="kinroot-nav-item" onClick={(e) => { e.preventDefault(); showToast('Opening Kinroot Elite Coaching Portal'); }}>COACHING</a>
-          <a href="#spaces" className="kinroot-nav-item" onClick={(e) => { e.preventDefault(); showToast('Exploring Biophilic Training Spaces'); }}>SPACES</a>
-          <a href="#membership" className="kinroot-nav-item" onClick={(e) => { e.preventDefault(); showToast('Viewing Kinroot Global Membership Tiers'); }}>MEMBERSHIP</a>
-          <a href="#journal" className="kinroot-nav-item" onClick={(e) => { e.preventDefault(); showToast('Opening Kinroot Science Journal'); }}>JOURNAL</a>
+          <a href="#coaching" className="kinroot-nav-item">COACHING</a>
+          <a href="#spaces" className="kinroot-nav-item">SPACES</a>
+          <a href="#membership" className="kinroot-nav-item">MEMBERSHIP</a>
+          <a href="#journal" className="kinroot-nav-item">JOURNAL</a>
         </nav>
 
         <div className="kinroot-nav-actions">
-          <button className="nav-action-circle-btn" title="Account" onClick={() => showToast('Opening Athlete Profile & Biometrics')}>
+          <button 
+            className="nav-action-circle-btn" 
+            title="Athlete Profile" 
+            onClick={() => setIsAccountModalOpen(true)}
+          >
             <User style={{ width: 16, height: 16 }} />
           </button>
-          <button className="nav-action-circle-btn" title="Menu" onClick={() => showToast('Opening System Navigation Menu')}>
+          <button 
+            className="nav-action-circle-btn" 
+            title="Navigation Menu" 
+            onClick={() => setIsMenuDrawerOpen(true)}
+          >
             <Menu style={{ width: 16, height: 16 }} />
           </button>
         </div>
       </header>
 
       {/* 2. HERO STAGE WITH INTEGRATED 3D KETTLEBELL & PORTAL BACKDROP */}
-      <section className="kinroot-hero-stage">
+      <section className="kinroot-hero-stage" id="hero">
         <div className="hero-atmosphere-backdrop" />
         
         <div className="hero-text-content">
@@ -138,25 +286,27 @@ export default function App() {
             </button>
           </div>
 
-          {/* Category Filter Pills Strip */}
-          <div className="category-filters-row">
-            {CATEGORIES.map((cat) => {
-              const IconComp = cat.icon;
-              const isActive = activeCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => {
-                    setActiveCategory(cat.id);
-                    showToast(`Filtered by ${cat.label}`);
-                  }}
-                  className={`cat-pill-button ${isActive ? 'active' : ''}`}
-                >
-                  <IconComp style={{ width: 14, height: 14 }} />
-                  <span>{cat.label}</span>
-                </button>
-              );
-            })}
+          {/* Category Filter Pills Strip (Full Row Desktop Fit) */}
+          <div className="category-filters-container">
+            <div className="category-filters-row">
+              {CATEGORIES.map((cat) => {
+                const IconComp = cat.icon;
+                const isActive = activeCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => {
+                      setActiveCategory(cat.id);
+                      showToast(`Filtered by ${cat.label}`);
+                    }}
+                    className={`cat-pill-button ${isActive ? 'active' : ''}`}
+                  >
+                    <IconComp style={{ width: 14, height: 14 }} />
+                    <span>{cat.label}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -173,7 +323,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 3. DASHBOARD CARDS GRID (EXACT 1:1 TO REFERENCE) */}
+      {/* 3. DASHBOARD CARDS GRID (PROGRAMS SECTION) */}
       <section className="kinroot-dashboard-grid" id="programs">
         
         {/* ROW 1: FEATURED PROGRAM (HYBRID STRENGTH) + TODAY'S SCHEDULE */}
@@ -367,42 +517,285 @@ export default function App() {
 
       </section>
 
-      {/* 4. FLOATING BOTTOM LIVE SYNC CARD (EXACT 1:1 TO REFERENCE) */}
-      <aside className="kinroot-floating-live-sync-banner">
-        <div className="live-sync-inner">
-          <div className="live-sync-top-header">
-            <span className="sync-headline-green">UP NEXT TODAY</span>
-            <span className="sync-status-indicator">
-              <span className="pulse-beacon" />
-              <span>live sync</span>
-            </span>
+      {/* 4. COACHING SECTION */}
+      <section className="kinroot-section-block" id="coaching">
+        <div className="section-header-wrap">
+          <div className="section-tag-pill">ELITE MOVEMENT SPECIALISTS</div>
+          <h2 className="section-heading-lg">Coaching & Biomechanics</h2>
+          <p className="section-desc-muted">
+            Direct 1-on-1 guidance from world-class movement directors and biomechanical physiologists.
+          </p>
+        </div>
+
+        <div className="coaches-grid">
+          {COACHES.map((coach, idx) => (
+            <div key={idx} className="coach-card">
+              <div className="coach-img-wrapper">
+                <img src={coach.image} alt={coach.name} className="coach-img" />
+                <div className="coach-cert-badge">{coach.cert}</div>
+              </div>
+              <div className="coach-card-body">
+                <div className="coach-role">{coach.role}</div>
+                <h3 className="coach-name">{coach.name}</h3>
+                <p className="coach-specialty">{coach.specialty}</p>
+                <div className="coach-rating-row">
+                  <Award style={{ width: 14, height: 14, color: '#c4f274' }} />
+                  <span>{coach.rating}</span>
+                </div>
+                <button 
+                  className="btn-coach-consult"
+                  onClick={() => {
+                    confetti({ particleCount: 30, spread: 50 });
+                    showToast(`Consultation requested with ${coach.name}`);
+                  }}
+                >
+                  <span>Book Consultation</span>
+                  <ArrowUpRight style={{ width: 14, height: 14 }} />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. BIOPHILIC SPACES SECTION */}
+      <section className="kinroot-section-block" id="spaces">
+        <div className="section-header-wrap">
+          <div className="section-tag-pill">SANCTUARY ARCHITECTURE</div>
+          <h2 className="section-heading-lg">Biophilic Training Spaces</h2>
+          <p className="section-desc-muted">
+            Crafted with natural basalt, living botanical oxygen walls, and low-EMF acoustic dampening.
+          </p>
+        </div>
+
+        <div className="spaces-showcase-grid">
+          {SPACES.map((space, idx) => (
+            <div key={idx} className="space-feature-card">
+              <div className="space-card-img-wrap">
+                <img src={space.bg} alt={space.title} className="space-img" />
+                <span className="space-tag-badge">{space.tag}</span>
+              </div>
+              <div className="space-card-info">
+                <h3 className="space-card-title">{space.title}</h3>
+                <p className="space-card-desc">{space.desc}</p>
+                <button 
+                  className="space-explore-btn"
+                  onClick={() => showToast(`Opening 3D Spatial Tour for ${space.title}`)}
+                >
+                  <span>Explore Virtual Chamber</span>
+                  <ChevronRight style={{ width: 15, height: 15, color: '#c4f274' }} />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 6. MEMBERSHIP TIERS SECTION */}
+      <section className="kinroot-section-block" id="membership">
+        <div className="section-header-wrap">
+          <div className="section-tag-pill">MEMBERSHIP ACCESS</div>
+          <h2 className="section-heading-lg">Commit To Your Evolution</h2>
+          <p className="section-desc-muted">
+            Flexible adaptive memberships designed for lifelong functional resilience.
+          </p>
+        </div>
+
+        <div className="membership-tiers-grid">
+          {MEMBERSHIP_TIERS.map((tier, idx) => (
+            <div key={idx} className={`tier-card ${tier.popular ? 'popular-glow' : ''}`}>
+              {tier.popular && <div className="tier-popular-badge">MOST POPULAR</div>}
+              <div className="tier-head">
+                <h3 className="tier-name">{tier.name}</h3>
+                <div className="tier-price-wrap">
+                  <span className="tier-amount">{tier.price}</span>
+                  <span className="tier-period">{tier.period}</span>
+                </div>
+                <p className="tier-desc">{tier.desc}</p>
+              </div>
+
+              <div className="tier-features-list">
+                {tier.features.map((feat, fIdx) => (
+                  <div key={fIdx} className="tier-feature-item">
+                    <Check style={{ width: 16, height: 16, color: '#c4f274', flexShrink: 0 }} />
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+
+              <button 
+                className={`btn-tier-cta ${tier.popular ? 'btn-tier-primary' : 'btn-tier-secondary'}`}
+                onClick={() => {
+                  confetti({ particleCount: 50, spread: 70 });
+                  showToast(`Selected ${tier.name}! Redirecting to member onboarding.`);
+                }}
+              >
+                <span>{tier.cta}</span>
+                <ArrowUpRight style={{ width: 16, height: 16 }} />
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 7. SCIENCE JOURNAL SECTION */}
+      <section className="kinroot-section-block" id="journal">
+        <div className="section-header-wrap">
+          <div className="section-tag-pill">RESEARCH & PROTOCOLS</div>
+          <h2 className="section-heading-lg">The Science Journal</h2>
+          <p className="section-desc-muted">
+            Peer-reviewed articles, strain diagnostics, and hormonal periodization insights.
+          </p>
+        </div>
+
+        <div className="journal-articles-grid">
+          {JOURNAL_POSTS.map((post, idx) => (
+            <article 
+              key={idx} 
+              className="journal-article-card"
+              onClick={() => showToast(`Opening article: "${post.title}"`)}
+            >
+              <div className="journal-meta-row">
+                <span className="journal-cat">{post.cat}</span>
+                <span className="journal-time">{post.readTime}</span>
+              </div>
+              <h3 className="journal-title">{post.title}</h3>
+              <p className="journal-snippet">{post.snippet}</p>
+              <div className="journal-read-link">
+                <span>Read Full Protocol</span>
+                <ArrowUpRight style={{ width: 14, height: 14 }} />
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* 8. FOOTER COMPONENT */}
+      <footer className="kinroot-footer">
+        <div className="footer-top-grid">
+          <div className="footer-brand-col">
+            <a href="#" className="footer-logo">KINROOT</a>
+            <p className="footer-tagline">
+              Adaptive Movement · Biophilic Architecture · High-Resilience Human Performance.
+            </p>
+            <div className="footer-metrics-badge">
+              <Shield style={{ width: 14, height: 14, color: '#c4f274' }} />
+              <span>Biometric Encrypted · ISO Kinetic Compliant</span>
+            </div>
           </div>
 
-          <div className="sync-session-title">
-            <strong>{activeLiveSync.time}</strong> • {activeLiveSync.name} ({activeLiveSync.cat})
+          <div className="footer-links-col">
+            <h4>Programs</h4>
+            <a href="#programs">Hybrid Strength</a>
+            <a href="#programs">Breath Mobility</a>
+            <a href="#programs">Endurance Terrain</a>
+            <a href="#programs">Active Recovery</a>
           </div>
 
-          <div className="sync-coach-subtitle">
-            {activeLiveSync.coach} • {activeLiveSync.duration}
+          <div className="footer-links-col">
+            <h4>Ecosystem</h4>
+            <a href="#coaching">Elite Coaches</a>
+            <a href="#spaces">Training Sanctuaries</a>
+            <a href="#membership">Membership Tiers</a>
+            <a href="#journal">Research Journal</a>
+          </div>
+
+          <div className="footer-newsletter-col">
+            <h4>Stay Synchronized</h4>
+            <p>Receive weekly adaptive workout protocols and recovery insights.</p>
+            <form onSubmit={handleNewsletterSubmit} className="footer-newsletter-form">
+              <input 
+                type="email" 
+                placeholder="athlete@kinroot.com"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                required
+              />
+              <button type="submit" className="footer-submit-btn">
+                <span>Join</span>
+                <ArrowUpRight style={{ width: 14, height: 14 }} />
+              </button>
+            </form>
           </div>
         </div>
 
-        <button 
-          className="sync-join-pill-btn"
-          onClick={() => {
-            confetti({
-              particleCount: 40,
-              spread: 65,
-              origin: { y: 0.9 },
-              colors: ['#c4f274', '#ffffff', '#8b9991']
-            });
-            showToast(`Joined live session: ${activeLiveSync.name}`);
-          }}
-        >
-          <span>Join Live Flow</span>
-          <ArrowUpRight style={{ width: 14, height: 14 }} />
-        </button>
-      </aside>
+        <div className="footer-bottom-bar">
+          <div className="footer-copy">© 2026 KINROOT ADAPTIVE PERFORMANCE INC. ALL RIGHTS RESERVED.</div>
+          <div className="footer-legal-links">
+            <a href="#" onClick={(e) => { e.preventDefault(); showToast('Privacy Policy'); }}>Privacy</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); showToast('Telemetry Terms'); }}>Terms of Telemetry</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); showToast('Cookie Preferences'); }}>Cookie Preferences</a>
+          </div>
+        </div>
+      </footer>
+
+      {/* 9. FLOATING BOTTOM LIVE SYNC CARD (Adjustable & Minimizable) */}
+      {!isLiveSyncHidden && (
+        <aside className={`kinroot-floating-live-sync-banner ${isLiveSyncMinimized ? 'minimized' : ''}`}>
+          {!isLiveSyncMinimized ? (
+            <>
+              <div className="live-sync-inner">
+                <div className="live-sync-top-header">
+                  <span className="sync-headline-green">UP NEXT TODAY</span>
+                  <span className="sync-status-indicator">
+                    <span className="pulse-beacon" />
+                    <span>live sync</span>
+                  </span>
+                </div>
+
+                <div className="sync-session-title">
+                  <strong>{activeLiveSync.time}</strong> • {activeLiveSync.name} ({activeLiveSync.cat})
+                </div>
+
+                <div className="sync-coach-subtitle">
+                  {activeLiveSync.coach} • {activeLiveSync.duration}
+                </div>
+              </div>
+
+              <div className="live-sync-actions-group">
+                <button 
+                  className="sync-join-pill-btn"
+                  onClick={() => {
+                    confetti({
+                      particleCount: 40,
+                      spread: 65,
+                      origin: { y: 0.9 },
+                      colors: ['#c4f274', '#ffffff', '#8b9991']
+                    });
+                    showToast(`Joined live session: ${activeLiveSync.name}`);
+                  }}
+                >
+                  <span>Join Live Flow</span>
+                  <ArrowUpRight style={{ width: 14, height: 14 }} />
+                </button>
+
+                <div className="sync-window-controls">
+                  <button 
+                    className="sync-ctrl-icon-btn" 
+                    title="Minimize live sync"
+                    onClick={() => setIsLiveSyncMinimized(true)}
+                  >
+                    <Minimize2 style={{ width: 13, height: 13 }} />
+                  </button>
+                  <button 
+                    className="sync-ctrl-icon-btn" 
+                    title="Close live sync"
+                    onClick={() => setIsLiveSyncHidden(true)}
+                  >
+                    <X style={{ width: 13, height: 13 }} />
+                  </button>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="live-sync-minimized-pill" onClick={() => setIsLiveSyncMinimized(false)}>
+              <span className="pulse-beacon" />
+              <span className="min-label"><strong>Live Flow:</strong> {activeLiveSync.name}</span>
+              <Maximize2 style={{ width: 14, height: 14, color: '#c4f274' }} />
+            </div>
+          )}
+        </aside>
+      )}
 
       {/* MODAL: PROGRAM DETAILS */}
       {selectedProgram && (
@@ -427,7 +820,7 @@ export default function App() {
                 className="btn-modal-enroll"
                 onClick={() => {
                   confetti({ particleCount: 50, spread: 70 });
-                  showToast(`Enrolled in ${selectedProgram.title}! Added to your active roster.`);
+                  showToast(`Enrolled in ${selectedProgram.title}! Added to active roster.`);
                   setSelectedProgram(null);
                 }}
               >
@@ -535,6 +928,89 @@ export default function App() {
                   <ChevronRight style={{ width: 16, height: 16, color: '#c4f274' }} />
                 </button>
               ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: ATHLETE ACCOUNT & BIOMETRICS */}
+      {isAccountModalOpen && (
+        <div className="kinroot-modal-overlay" onClick={() => setIsAccountModalOpen(false)}>
+          <div className="kinroot-modal-box" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-top-bar">
+              <div className="modal-category-tag">ATHLETE TELEMETRY</div>
+              <button className="modal-close-btn" onClick={() => setIsAccountModalOpen(false)}>
+                <X style={{ width: 18, height: 18 }} />
+              </button>
+            </div>
+
+            <h2 className="modal-program-name">Athlete Diagnostic Profile</h2>
+            <p className="modal-program-sub">Real-time physiological readiness and strain telemetry.</p>
+
+            <div className="athlete-metrics-row">
+              <div className="metric-stat-box">
+                <div className="metric-num">94%</div>
+                <div className="metric-lbl">Recovery Score</div>
+              </div>
+              <div className="metric-stat-box">
+                <div className="metric-num">76 ms</div>
+                <div className="metric-lbl">HRV Baseline</div>
+              </div>
+              <div className="metric-stat-box">
+                <div className="metric-num">14.2</div>
+                <div className="metric-lbl">Daily Strain</div>
+              </div>
+            </div>
+
+            <div className="modal-details-callout" style={{ marginTop: 16 }}>
+              <p><strong>Active Program:</strong> Hybrid Strength (Week 3 of 8 · Eccentric Overload Cycle)</p>
+            </div>
+
+            <button 
+              className="btn-modal-enroll" 
+              style={{ width: '100%', marginTop: 20 }}
+              onClick={() => {
+                showToast('Synchronized with Apple Health & Whoop 4.0');
+                setIsAccountModalOpen(false);
+              }}
+            >
+              <span>Sync Biometrics ↗</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* DRAWER: NAVIGATION MENU */}
+      {isMenuDrawerOpen && (
+        <div className="kinroot-modal-overlay" onClick={() => setIsMenuDrawerOpen(false)}>
+          <div className="kinroot-drawer-box" onClick={(e) => e.stopPropagation()}>
+            <div className="drawer-header">
+              <div className="drawer-logo">KINROOT</div>
+              <button className="modal-close-btn" onClick={() => setIsMenuDrawerOpen(false)}>
+                <X style={{ width: 18, height: 18 }} />
+              </button>
+            </div>
+
+            <div className="drawer-nav-list">
+              <a href="#hero" onClick={() => setIsMenuDrawerOpen(false)}>Home & Adaptive Studio</a>
+              <a href="#programs" onClick={() => setIsMenuDrawerOpen(false)}>Programs Library</a>
+              <a href="#coaching" onClick={() => setIsMenuDrawerOpen(false)}>Biomechanics Coaching</a>
+              <a href="#spaces" onClick={() => setIsMenuDrawerOpen(false)}>Biophilic Sanctuaries</a>
+              <a href="#membership" onClick={() => setIsMenuDrawerOpen(false)}>Membership & Pricing</a>
+              <a href="#journal" onClick={() => setIsMenuDrawerOpen(false)}>Science Research Journal</a>
+            </div>
+
+            <div className="drawer-footer-actions">
+              <button 
+                className="btn-find-program" 
+                style={{ width: '100%', justifyContent: 'center' }}
+                onClick={() => {
+                  setIsMenuDrawerOpen(false);
+                  setIsAssessmentOpen(true);
+                }}
+              >
+                <span>Take Diagnostic Assessment</span>
+              </button>
             </div>
           </div>
         </div>

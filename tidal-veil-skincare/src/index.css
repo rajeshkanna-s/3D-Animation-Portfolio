@@ -38,6 +38,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Section Scroll Margins */
+section, #specimens, #palette, #typography, #materials, #ritual {
+  scroll-margin-top: 90px;
+}
+
 /* Base App Wrapper */
 .tidal-design-system-app {
   max-width: 1440px;
@@ -46,7 +51,7 @@ body {
   position: relative;
 }
 
-/* FROZEN TOP NAVIGATION HEADER */
+/* SLIM FROZEN TOP NAVIGATION HEADER */
 .tidal-frozen-header {
   position: sticky;
   top: 12px;
@@ -54,25 +59,50 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 28px;
+  padding: 8px 24px;
+  height: 56px;
   background: rgba(15, 33, 32, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--mineral-mist);
-  border-radius: 16px;
-  margin-bottom: 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(95, 129, 128, 0.35);
+  border-radius: 999px;
+  margin-bottom: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(95, 129, 128, 0.1);
+  transition: all 0.3s ease;
+}
+
+.ds-brand-lockup-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.ds-brand-lockup-link .ds-brand-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  color: var(--pearl);
+  line-height: 1.1;
+}
+
+.ds-brand-lockup-link .ds-brand-sub {
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  color: var(--mineral-mist);
+  display: block;
 }
 
 .tidal-nav-links {
   display: flex;
-  gap: 20px;
+  gap: 24px;
 }
 
 .t-nav-link {
   color: var(--sandstone);
   text-decoration: none;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   letter-spacing: 0.12em;
   font-weight: 600;
   transition: color 0.2s ease;
@@ -83,13 +113,13 @@ body {
 .btn-quick-bag {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
+  gap: 6px;
+  padding: 7px 16px;
   border-radius: 999px;
   background: var(--seafoam);
   color: var(--pearl);
   border: 1px solid var(--mineral-mist);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -98,6 +128,7 @@ body {
 .btn-quick-bag:hover {
   background: var(--mineral-mist);
   color: var(--deep-tide);
+  transform: scale(1.03);
 }
 
 /* Toast Banner */

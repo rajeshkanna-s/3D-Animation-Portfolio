@@ -52,37 +52,44 @@ button:focus-visible, a:focus-visible, input:focus-visible {
   box-shadow: 0 26px 80px rgba(50, 27, 7, 0.42);
 }
 
+/* Section Scroll Margins */
+section, #top, #collection, #story, #ingredients, #journal {
+  scroll-margin-top: 70px;
+}
+
 .site-header {
   position: sticky;
   top: 0;
   z-index: 30;
-  min-height: 82px;
+  min-height: 56px;
+  height: 56px;
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
+  grid-template-columns: minmax(180px, 1fr) auto minmax(180px, 1fr);
   align-items: center;
   gap: 24px;
-  padding: 0 48px;
-  background: rgba(10, 9, 8, 0.96);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(18px);
+  padding: 0 36px;
+  background: rgba(10, 9, 8, 0.95);
+  border-bottom: 1px solid rgba(228, 196, 145, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .wordmark {
   width: fit-content;
   color: var(--gold-bright);
   font-family: var(--serif);
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 500;
   letter-spacing: 0.16em;
   text-decoration: none;
   text-transform: uppercase;
 }
 
-.desktop-nav { display: flex; align-items: center; justify-content: center; gap: 37px; }
+.desktop-nav { display: flex; align-items: center; justify-content: center; gap: 32px; }
 
 .desktop-nav a {
   position: relative;
-  padding: 31px 0 27px;
+  padding: 18px 0 16px;
   color: #d9d4cd;
   font-size: 11px;
   font-weight: 700;
@@ -354,12 +361,12 @@ button:focus-visible, a:focus-visible, input:focus-visible {
 .trust-bar span { display: grid; gap: 3px; color: #8f867c; font-size: 9px; }
 .trust-bar strong { color: #cfc5b9; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; }
 
-.site-footer { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 30px; padding: 58px 7% 35px; border-top: 1px solid rgba(255, 255, 255, 0.06); background: #080706; }
-.site-footer > div:first-child p { margin: 12px 0 0; color: #7e766e; font-size: 12px; }
-.footer-links { display: flex; gap: 24px; }
+.site-footer { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; padding: 28px 6% 20px; border-top: 1px solid rgba(255, 255, 255, 0.06); background: #080706; }
+.site-footer > div:first-child p { margin: 6px 0 0; color: #7e766e; font-size: 11px; }
+.footer-links { display: flex; gap: 20px; }
 .footer-links a, .footer-links button { padding: 0; border: 0; background: transparent; color: #a8a097; cursor: pointer; font-size: 10px; text-decoration: none; text-transform: uppercase; }
 .footer-links a:hover, .footer-links button:hover { color: var(--gold-bright); }
-.site-footer small { grid-column: 1 / -1; padding-top: 34px; border-top: 1px solid rgba(255, 255, 255, 0.05); color: #645e57; font-size: 9px; letter-spacing: 0.08em; text-align: center; text-transform: uppercase; }
+.site-footer small { grid-column: 1 / -1; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.05); color: #645e57; font-size: 9px; letter-spacing: 0.08em; text-align: center; text-transform: uppercase; }
 
 .toast { position: fixed; z-index: 80; top: 22px; left: 50%; display: flex; align-items: center; gap: 10px; padding: 13px 18px; border: 1px solid var(--gold); background: #17130f; color: #f7eee1; box-shadow: 0 16px 42px rgba(0, 0, 0, 0.35); font-size: 12px; transform: translateX(-50%); animation: toast-in 260ms ease both; }
 @keyframes toast-in { from { opacity: 0; transform: translate(-50%, -10px); } to { opacity: 1; transform: translate(-50%, 0); } }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Flame,
   Utensils,
@@ -125,11 +125,24 @@ export function App() {
   const [activeCourse, setActiveCourse] = useState(TASTING_COURSES[3]);
   const [isReservationOpen, setIsReservationOpen] = useState(false);
   const [partySize, setPartySize] = useState('2');
-  const [resDate, setResDate] = useState('2026-09-12');
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const [resDate, setResDate] = useState('');
   const [resTime, setResTime] = useState('19:30');
   const [seatingArea, setSeatingArea] = useState("Chef's Counter");
   const [activeSection, setActiveSection] = useState('hero');
   const [toastMessage, setToastMessage] = useState('');
+  const [formError, setFormError] = useState('');
+  const dialog = useRef(null);
+  useEffect(() => {
+    if (!isReservationOpen) return;
+    setFormError('');
+    const trigger = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    dialog.current.showModal();
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = previousOverflow; trigger?.focus(); };
+  }, [isReservationOpen]);
 
   // Scroll spy effect to highlight navigation tabs
   useEffect(() => {
@@ -155,9 +168,16 @@ export function App() {
     setTimeout(() => setToastMessage(''), 3500);
   };
 
-  const handleBooking = () => {
-    showToast(`Reservation confirmed: Party of ${partySize} (${seatingArea}) on ${resDate} at ${resTime}!`);
-    setIsReservationOpen(false);
+  const handleBooking = (event) => {
+    event.preventDefault();
+    if (!resDate || resDate < today) return;
+    try {
+      localStorage.setItem('nocturne-reservation-demo', JSON.stringify({ partySize, seatingArea: Number(partySize) >= 6 ? 'Private Dining Sanctum' : Number(partySize) >= 4 ? 'Hearth Booth' : seatingArea, resDate, resTime }));
+      showToast(`Saved on this device: ${partySize} guests on ${resDate} at ${resTime}. No reservation has been made.`);
+      setIsReservationOpen(false);
+    } catch {
+      setFormError('Unable to save on this device. Please enable browser storage and try again.');
+    }
   };
 
   return (
@@ -165,7 +185,7 @@ export function App() {
       
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="nocturne-toast">
+        <div className="nocturne-toast" role="status">
           <Flame size={16} className="toast-flame-icon" />
           <span>{toastMessage}</span>
         </div>
@@ -447,38 +467,41 @@ export function App() {
 
       {/* 8. RESERVATION MODAL */}
       {isReservationOpen && (
-        <div className="nocturne-modal-overlay" onClick={() => setIsReservationOpen(false)}>
+        <dialog ref={dialog} className="nocturne-modal-overlay" aria-labelledby="reservation-title" onCancel={() => setIsReservationOpen(false)} onClick={(event) => { if (event.target === event.currentTarget) setIsReservationOpen(false); }}>
           <div className="nocturne-modal-window" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header-row">
               <div>
                 <span className="michelin-stars-pill" style={{ marginBottom: 6 }}>NOCTURNE HEARTH BOOKING</span>
-                <h3 className="modal-headline">Reserve Your Hearth Experience</h3>
+                <h3 className="modal-headline" id="reservation-title">Plan Your Hearth Experience</h3>
               </div>
-              <button className="modal-close-round" onClick={() => setIsReservationOpen(false)}>
+              <button className="modal-close-round" aria-label="Close reservation" onClick={() => setIsReservationOpen(false)}>
                 <X size={18} />
               </button>
             </div>
 
-            <div className="modal-body-form">
+            <form className="modal-body-form" onSubmit={handleBooking}>
+              <p className="demo-note">Demo planner: save your preferences on this device. This does not reserve a table or send an email.</p>
+              <p role="alert">{formError}</p>
               <div className="form-row-split">
                 <div className="form-group-n">
-                  <label><Users size={13} /> Party Size</label>
+                  <label htmlFor="party-size"><Users size={13} /> Party Size</label>
                   <select 
-                    value={partySize} 
+                    id="party-size" value={partySize}
                     onChange={(e) => setPartySize(e.target.value)}
                     className="nocturne-select"
                   >
                     <option value="1">1 Guest (Solo Counter)</option>
                     <option value="2">2 Guests (Chef's Counter)</option>
                     <option value="4">4 Guests (Hearth Booth)</option>
-                    <option value="6">6-8 Guests (Private Dining Sanctum)</option>
+                    <option value="6">6 Guests (Private Dining Sanctum)</option>
+                    <option value="8">8 Guests (Private Dining Sanctum)</option>
                   </select>
                 </div>
 
                 <div className="form-group-n">
-                  <label><Clock size={13} /> Seating Time</label>
+                  <label htmlFor="seating-time"><Clock size={13} /> Seating Time</label>
                   <select 
-                    value={resTime} 
+                    id="seating-time" value={resTime}
                     onChange={(e) => setResTime(e.target.value)}
                     className="nocturne-select"
                   >
@@ -490,9 +513,9 @@ export function App() {
               </div>
 
               <div className="form-group-n">
-                <label><Calendar size={13} /> Reservation Date</label>
+                <label htmlFor="reservation-date"><Calendar size={13} /> Reservation Date</label>
                 <input 
-                  type="date" 
+                  id="reservation-date" type="date" min={today} required
                   value={resDate} 
                   onChange={(e) => setResDate(e.target.value)}
                   className="nocturne-input"
@@ -511,16 +534,16 @@ export function App() {
               </div>
 
               <button 
-                onClick={handleBooking}
+                type="submit"
                 className="btn-ember-primary full-width" 
                 style={{ padding: '16px', marginTop: 16 }}
               >
-                <span>Confirm Hearth Reservation</span>
+                <span>Save Demo Plan</span>
                 <Check size={16} />
               </button>
-            </div>
+            </form>
           </div>
-        </div>
+        </dialog>
       )}
 
       {/* 9. LUXURY FOOTER */}

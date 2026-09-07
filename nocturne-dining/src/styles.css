@@ -89,7 +89,12 @@ body {
   50% { opacity: 0.7; transform: scale(1.1); }
 }
 
-/* 1. FROZEN / STICKY TOP NAVIGATION */
+/* Section scroll margins */
+section, #hero, #menu, #hearth, #cellar, #private, #awards {
+  scroll-margin-top: 90px;
+}
+
+/* 1. SLIM FROZEN / STICKY TOP NAVIGATION */
 .nocturne-nav-header {
   position: sticky;
   top: 12px;
@@ -97,49 +102,59 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 28px;
-  background: rgba(12, 8, 5, 0.94);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  height: 56px;
+  padding: 8px 24px;
+  background: rgba(12, 8, 5, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-ember);
-  border-radius: 16px;
-  margin-bottom: 28px;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75);
+  border-radius: 999px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 15px rgba(229, 142, 55, 0.12);
 }
 
 .nocturne-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
 }
 
 .flame-monogram {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
   background: rgba(229, 142, 55, 0.15);
   border: 1px solid var(--border-ember);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nocturne-brand:hover .flame-monogram {
+  transform: scale(1.08) rotate(5deg);
+  box-shadow: 0 0 12px var(--ember-orange);
 }
 
 .brand-name-serif {
   display: block;
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: 0.22em;
   color: #fff;
+  line-height: 1;
 }
 
 .brand-sub-tag {
   display: block;
-  font-size: 0.56rem;
+  font-size: 0.52rem;
   letter-spacing: 0.18em;
   color: var(--ember-orange);
   font-weight: 700;
+  line-height: 1;
+  margin-top: 2px;
 }
 
 .nocturne-nav-links {
@@ -735,6 +750,13 @@ body {
 
 /* 8. RESERVATION MODAL */
 .nocturne-modal-overlay {
+  margin: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  color: inherit;
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.85);
@@ -747,6 +769,8 @@ body {
 }
 
 .nocturne-modal-window {
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
   background: #140E0A;
   border: 1px solid var(--border-ember);
   border-radius: 24px;
@@ -776,6 +800,7 @@ body {
 }
 
 .modal-close-round {
+  flex-shrink: 0;
   background: transparent;
   border: 1px solid var(--border-subtle);
   color: var(--text-muted);
@@ -865,43 +890,44 @@ body {
   color: var(--gold-warm);
 }
 
-/* 9. FOOTER */
+/* 9. SLIM LUXURY FOOTER */
 .nocturne-footer {
+  margin-top: 50px;
   border-top: 1px solid var(--border-subtle);
-  padding-top: 50px;
+  padding-top: 32px;
 }
 
 .footer-cols-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 32px;
-  margin-bottom: 40px;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
 .footer-brand-lockup {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .footer-brand-desc {
-  font-size: 0.82rem;
-  line-height: 1.65;
+  font-size: 0.78rem;
+  line-height: 1.5;
   color: var(--text-muted);
   max-width: 320px;
 }
 
 .footer-col-n h4 {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: var(--ember-orange);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .footer-col-n p {
-  font-size: 0.8rem;
-  line-height: 1.6;
+  font-size: 0.76rem;
+  line-height: 1.5;
   color: var(--text-muted);
   display: flex;
   align-items: flex-start;
@@ -910,7 +936,7 @@ body {
 
 .inline-icon {
   color: var(--ember-orange);
-  margin-top: 3px;
+  margin-top: 2px;
   flex-shrink: 0;
 }
 
@@ -918,8 +944,8 @@ body {
   display: flex;
   justify-content: space-between;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 24px;
-  font-size: 0.68rem;
+  padding-top: 16px;
+  font-size: 0.65rem;
   letter-spacing: 0.12em;
   color: var(--text-muted);
 }
@@ -941,4 +967,23 @@ body {
   .private-dining-banner {
     padding: 32px;
   }
+}
+
+.demo-note { font-size: .875rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 18px; }
+:focus-visible { outline: 2px solid #e58e37; outline-offset: 4px; }
+@media (max-width: 600px) {
+  .nocturne-page { padding: 12px 14px 40px; }
+  .nocturne-nav-header { padding: 12px; gap: 10px; flex-wrap: wrap; }
+  .nocturne-hero-stage, .private-dining-banner { padding: 24px 18px; }
+  .nocturne-hero-headline { font-size: clamp(2rem, 8.5vw, 3.2rem); overflow-wrap: anywhere; }
+  .nocturne-hero-btn-row, .footer-bottom-line { flex-direction: column; align-items: stretch; }
+  .michelin-stars-pill { font-size: .65rem; white-space: normal; }
+  .nocturne-modal-overlay { padding: 12px; }
+  .nocturne-modal-window { padding: 22px; max-height: calc(100dvh - 24px); }
+  .form-row-split { grid-template-columns: minmax(0, 1fr); }
+  .nocturne-select, .nocturne-input { min-width: 0; width: 100%; }
+  .nocturne-toast { max-width: calc(100vw - 28px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
 }

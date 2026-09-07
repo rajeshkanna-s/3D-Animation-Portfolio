@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   CalendarBlank,
@@ -27,9 +27,46 @@ const suites = [
 export function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
-  const [booked, setBooked] = useState(false);
+  const [booked, setBooked] = useState('');
+  const [newsletterStatus, setNewsletterStatus] = useState('');
+  const [saveStatus, setSaveStatus] = useState('');
+  const [savedSuites, setSavedSuites] = useState(() => {
+    try { const saved = JSON.parse(localStorage.getItem('soluna-saved-suites') || '[]'); return Array.isArray(saved) ? saved.filter(name => suites.some(suite => suite.name === name)) : []; } catch { return []; }
+  });
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const [checkIn, setCheckIn] = useState('');
+  const [checkOut, setCheckOut] = useState('');
+  const [guests, setGuests] = useState('2');
+  const bookingDialog = useRef(null);
   const [selectedSuite, setSelectedSuite] = useState("Cliffside Pool Villa");
   const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    if (!bookingOpen) return;
+    setBooked('');
+    const trigger = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    bookingDialog.current.showModal();
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = previousOverflow; trigger?.focus(); };
+  }, [bookingOpen]);
+
+  const toggleSaved = (name) => {
+    const next = savedSuites.includes(name) ? savedSuites.filter(item => item !== name) : [...savedSuites, name];
+    try {
+      localStorage.setItem('soluna-saved-suites', JSON.stringify(next));
+      setSavedSuites(next);
+      setSaveStatus(`${name} ${next.includes(name) ? 'saved on this device' : 'removed from saved suites'}.`);
+    } catch { setSaveStatus('Unable to save. Browser storage is unavailable.'); }
+  };
+
+  const submitNewsletter = (event) => {
+    event.preventDefault();
+    try {
+      localStorage.setItem('soluna-newsletter-demo', new FormData(event.currentTarget).get('email'));
+      setNewsletterStatus('Email saved on this device for this demo. You have not been subscribed; no emails will be sent.');
+    } catch { setNewsletterStatus('Unable to save. Browser storage is unavailable.'); }
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -53,7 +90,18 @@ export function App() {
 
   const submitBooking = (event) => {
     event.preventDefault();
-    setBooked(true);
+    if (!checkIn || checkIn < today || !checkOut || checkOut <= checkIn) {
+      setBooked('Choose a future stay with check-out after check-in.');
+      return;
+    }
+    if (selectedSuite === 'Beachfront Suite' && Number(guests) > 2) {
+      setBooked('The Beachfront Suite accommodates up to two guests. Choose another suite or reduce the party size.');
+      return;
+    }
+    try {
+      localStorage.setItem('soluna-stay-demo', JSON.stringify({ selectedSuite, checkIn, checkOut, guests }));
+      setBooked(`Saved on this device: ${selectedSuite}, ${checkIn} to ${checkOut}, ${guests} guests. This is a demo plan; no booking or availability check has been made.`);
+    } catch { setBooked('Unable to save. Browser storage is unavailable.'); }
   };
 
   return (
@@ -65,11 +113,11 @@ export function App() {
           {nav.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
         </nav>
         <button className="primary small" type="button" onClick={() => setBookingOpen(true)}>Book your stay <ArrowRight /></button>
-        <button className="menu-toggle" type="button" onClick={() => setMenuOpen((value) => !value)} aria-label="Toggle menu">{menuOpen ? <X /> : <List />}</button>
+        <button className="menu-toggle" type="button" onClick={() => setMenuOpen((value) => !value)} aria-label="Toggle menu" aria-expanded={menuOpen} aria-controls="mobile-navigation">{menuOpen ? <X /> : <List />}</button>
       </header>
 
       {menuOpen && (
-        <div className="mobile-nav">
+        <div className="mobile-nav" id="mobile-navigation" onKeyDown={(event) => { if (event.key === 'Escape') { setMenuOpen(false); document.querySelector('.menu-toggle')?.focus(); } }}>
           {nav.map(([label, href]) => <a key={label} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}
           <button type="button" onClick={() => { setMenuOpen(false); setBookingOpen(true); }}>Book your stay <ArrowRight /></button>
         </div>
@@ -140,11 +188,12 @@ export function App() {
         <div className="suite-grid" id="gallery">
           {suites.map((suite) => (
             <article className="suite reveal" key={suite.name}>
-              <div className="suite-image"><img src={suite.image} alt={suite.name} /><button aria-label={"Save " + suite.name} type="button"><Heart /></button></div>
+              <div className="suite-image"><img src={suite.image} alt={suite.name} /><button aria-label={(savedSuites.includes(suite.name) ? 'Unsave ' : 'Save ') + suite.name} aria-pressed={savedSuites.includes(suite.name)} onClick={() => toggleSaved(suite.name)} type="button"><Heart weight={savedSuites.includes(suite.name) ? 'fill' : 'regular'} /></button></div>
               <div className="suite-line"><div><h3>{suite.name}</h3><p>{suite.note}</p><span>{suite.price}</span></div><button type="button" onClick={() => { setSelectedSuite(suite.name); setBookingOpen(true); }} aria-label={"Book " + suite.name}><ArrowRight /></button></div>
             </article>
           ))}
         </div>
+        <p className="save-status" role="status">{saveStatus}</p>
       </section>
 
       <section className="experience-banner">
@@ -160,30 +209,32 @@ export function App() {
 
       <section className="contact" id="contact">
         <div><Waves size={35} /><p><b>Be the first to know.</b><span>Private offers, new experiences and stories from the cove.</span></p></div>
-        <form onSubmit={(event) => event.preventDefault()}><input type="email" required placeholder="Enter your email address" aria-label="Email address" /><button type="submit">Subscribe <ArrowRight /></button></form>
+        <form onSubmit={submitNewsletter}><input type="email" name="email" required placeholder="Enter your email address" aria-label="Email address" /><button type="submit">Save demo interest <ArrowRight /></button><p className="newsletter-status" role="status">{newsletterStatus || 'Demo only: your email stays on this device. No subscription or emails.'}</p></form>
       </section>
 
       <footer>
         <a className="logo" href="#top"><Waves size={26} /><span>Soluna Cove</span></a>
         <p>Island luxury, consciously composed.</p>
-        <div><a href="#suites">Suites</a><a href="#experience">Experiences</a><a href="mailto:hello@solunacove.example">Contact</a></div>
+        <div><a href="#suites">Suites</a><a href="#experience">Experiences</a><a href="#contact">Stay in touch</a></div>
       </footer>
 
       {bookingOpen && (
-        <div className="modal-backdrop" onMouseDown={() => setBookingOpen(false)}>
-          <form className="booking-modal" onSubmit={submitBooking} onMouseDown={(event) => event.stopPropagation()}>
+        <dialog ref={bookingDialog} className="modal-backdrop" aria-labelledby="booking-title" onCancel={() => setBookingOpen(false)} onClick={(event) => { if (event.target === event.currentTarget) setBookingOpen(false); }}>
+          <form className="booking-modal" onSubmit={submitBooking} onChange={() => setBooked('')} onClick={(event) => event.stopPropagation()}>
             <button className="close" type="button" onClick={() => setBookingOpen(false)} aria-label="Close booking"><X /></button>
             <p className="kicker">Your coastal escape</p>
-            <h2>Book your stay.</h2>
+            <h2 id="booking-title">Plan your stay.</h2>
+            <p className="demo-note">Save a demo plan on this device. No booking, availability check or email is sent.</p>
             <label>Suite<select value={selectedSuite} onChange={(event) => setSelectedSuite(event.target.value)}>{["Oceanview Pool Villa", ...suites.map((suite) => suite.name)].map((name) => <option key={name}>{name}</option>)}</select></label>
             <div className="form-row">
-              <label>Check in<span><CalendarBlank /><input type="date" required /></span></label>
-              <label>Guests<span><Users /><select defaultValue="2"><option>1</option><option>2</option><option>3</option><option>4</option></select></span></label>
+              <label>Check in<span><CalendarBlank /><input type="date" min={today} value={checkIn} onChange={(event) => { setCheckIn(event.target.value); setCheckOut(''); }} required /></span></label>
+              <label>Check out<span><CalendarBlank /><input type="date" min={checkIn || today} value={checkOut} onChange={(event) => setCheckOut(event.target.value)} required /></span></label>
+              <label>Guests<span><Users /><select value={guests} onChange={(event) => setGuests(event.target.value)}><option>1</option><option>2</option><option>3</option><option>4</option></select></span></label>
             </div>
-            <button className="primary" type="submit">Check availability <ArrowRight /></button>
-            {booked && <p className="success"><CheckCircle weight="fill" /> Dates received — your island host will reply shortly.</p>}
+            <button className="primary" type="submit">Save demo plan <ArrowRight /></button>
+            <p className="success" role="status">{booked}</p>
           </form>
-        </div>
+        </dialog>
       )}
     </main>
   );
