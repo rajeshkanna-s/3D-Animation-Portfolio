@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="92" height="92" x="4" y="4" rx="24" fill="#1C1815" stroke="#C5A880" stroke-width="3"/>
+  <!-- Elegant camera / aperture monogram -->
+  <circle cx="50" cy="50" r="22" stroke="#C5A880" stroke-width="3" fill="none" />
+  <circle cx="50" cy="50" r="10" fill="#C5A880" />
+  <path d="M50 20 L50 28" stroke="#C5A880" stroke-width="3" stroke-linecap="round" />
+  <text x="50" y="82" font-family="'Italiana', serif" font-size="12" fill="#FAF7F2" text-anchor="middle" letter-spacing="2">MIRA</text>
+</svg>

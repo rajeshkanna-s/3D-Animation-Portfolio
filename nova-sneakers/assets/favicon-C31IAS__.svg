@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="novaCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2F9FF" />
+      <stop offset="40%" stop-color="#00F0FF" />
+      <stop offset="100%" stop-color="#006699" />
+    </linearGradient>
+    <linearGradient id="solarGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFB300" />
+      <stop offset="100%" stop-color="#FF5500" />
+    </linearGradient>
+    <radialGradient id="novaBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0A141A" />
+      <stop offset="100%" stop-color="#05080A" />
+    </radialGradient>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#00F0FF" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+  
+  <rect width="92" height="92" x="4" y="4" rx="24" fill="url(#novaBg)" stroke="#00F0FF" stroke-width="2.5" stroke-opacity="0.4" />
+  
+  <!-- Cybernetic NØVA Techwear Sneaker & Lightning Exoskeleton -->
+  <g filter="url(#neonGlow)">
+    <!-- Techwear Lightning Bolt Crest -->
+    <path d="M54 18 L32 50 L48 50 L42 82 L70 44 L52 44 Z" fill="url(#novaCyan)" />
+    <!-- Dynamic Energy Arc Accent -->
+    <path d="M22 66 C36 74 64 74 78 66" fill="none" stroke="url(#solarGlow)" stroke-width="3" stroke-linecap="round" />
+    <circle cx="50" cy="18" r="2.5" fill="#FFFFFF" />
+  </g>
+</svg>

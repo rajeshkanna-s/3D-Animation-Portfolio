@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pastaTerracotta" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2A07E" />
+      <stop offset="50%" stop-color="#C85A32" />
+      <stop offset="100%" stop-color="#8F3212" />
+    </linearGradient>
+    <linearGradient id="pastaGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE5A3" />
+      <stop offset="100%" stop-color="#D4A373" />
+    </linearGradient>
+    <radialGradient id="osteriaBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#24140E" />
+      <stop offset="100%" stop-color="#0D0704" />
+    </radialGradient>
+    <filter id="pastaGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#C85A32" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  
+  <rect width="92" height="92" x="4" y="4" rx="24" fill="url(#osteriaBg)" stroke="#C85A32" stroke-width="2.5" stroke-opacity="0.4" />
+  
+  <!-- Handmade Pasta Fork & Tuscan Tagliatelle Swirl -->
+  <g filter="url(#pastaGlow)">
+    <!-- Elegant Italian Dinner Fork -->
+    <path d="M50 18 L50 82" stroke="url(#pastaTerracotta)" stroke-width="3.5" stroke-linecap="round" />
+    <path d="M42 22 L42 42 C42 48 58 48 58 42 L58 22" fill="none" stroke="url(#pastaTerracotta)" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M46 22 L46 38 M54 22 L54 38" stroke="url(#pastaTerracotta)" stroke-width="2" />
+    <!-- Golden Swirling Tagliatelle Ribbon -->
+    <path d="M28 48 C36 40 64 40 72 48 C78 54 62 60 50 56 C38 52 24 58 30 64 C36 70 64 68 70 60" fill="none" stroke="url(#pastaGold)" stroke-width="3" stroke-linecap="round" />
+    <!-- Basil Leaf Spark -->
+    <circle cx="68" cy="36" r="3" fill="#88B04B" />
+  </g>
+</svg>

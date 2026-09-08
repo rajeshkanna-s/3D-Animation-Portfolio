@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="92" height="92" x="4" y="4" rx="24" fill="#0C0806" stroke="#E58E37" stroke-width="3"/>
+  <!-- Ember flame motif -->
+  <path d="M50 18 C58 32, 72 44, 72 60 C72 73.2, 62.2 82, 50 82 C37.8 82, 28 73.2, 28 60 C28 44, 42 32, 50 18 Z" fill="#E58E37" opacity="0.95"/>
+  <path d="M50 42 C54 50, 60 56, 60 64 C60 70, 55 74, 50 74 C45 74, 40 70, 40 64 C40 56, 46 50, 50 42 Z" fill="#FFA439"/>
+  <circle cx="50" cy="65" r="4" fill="#FFFFFF"/>
+</svg>

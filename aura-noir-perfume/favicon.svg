@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="92" height="92" x="4" y="4" rx="24" fill="#080605" stroke="#D4AF37" stroke-width="3"/>
+  <!-- Obsidian perfume flacon cap -->
+  <rect x="42" y="18" width="16" height="12" rx="2" fill="#D4AF37" />
+  <rect x="36" y="30" width="28" height="6" fill="#F3E5AB" />
+  <!-- Flacon body -->
+  <polygon points="26,36 74,36 68,78 32,78" fill="none" stroke="#D4AF37" stroke-width="3" />
+  <circle cx="50" cy="56" r="8" fill="#D4AF37" opacity="0.8" />
+</svg>
