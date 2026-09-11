@@ -23,7 +23,9 @@ const projects = [
   { name: 'soluna-cove-resort', port: 5192 },
   { name: 'aurelia-developments', port: 5193 },
   { name: 'solara-atelier', port: 5194 },
-  { name: 'web-roast', port: 5195 }
+  { name: 'web-roast', port: 5195 },
+  { name: 'mira-vale-studio', port: 5196 },
+  { name: 'rasmia-portfolio', port: 5197 }
 ];
 
 const MIME_TYPES = {

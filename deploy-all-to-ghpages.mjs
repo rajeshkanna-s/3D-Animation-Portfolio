@@ -27,7 +27,8 @@ const projects = [
   { name: 'aurelia-developments', port: 5193, title: 'Aurelia • Premier Developments' },
   { name: 'solara-atelier', port: 5194, title: 'Solara Atelier • Horology' },
   { name: 'web-roast', port: 5195, title: 'Web Roast • Artisanal Coffee' },
-  { name: 'mira-vale-studio', port: 5196, title: 'Mira Vale • Creative Studio' }
+  { name: 'mira-vale-studio', port: 5196, title: 'Mira Vale • Creative Studio' },
+  { name: 'rasmia-portfolio', repo: 'rasmia', port: 5197, title: 'RASMIA • Optical Design' }
 ];
 
 const distSiteDir = path.join(__dirname, 'dist_site');
@@ -162,11 +163,12 @@ async function main() {
         run('git checkout -b gh-pages', tempGitDir);
         run('git add -A', tempGitDir);
         run(`git commit -m "Deploy ${p.name} to GitHub Pages"`, tempGitDir);
-        run(`git remote add origin https://${TOKEN}@github.com/${GITHUB_USER}/${p.name}.git`, tempGitDir);
+        const repoName = p.repo || p.name;
+        run(`git remote add origin https://${TOKEN}@github.com/${GITHUB_USER}/${repoName}.git`, tempGitDir);
         run('git push -f origin gh-pages', tempGitDir);
         fs.rmSync(tempGitDir, { recursive: true, force: true });
 
-        await enableGitHubPages(p.name);
+        await enableGitHubPages(repoName);
       } catch (e) {
         console.warn(`  Could not deploy standalone for ${p.name}:`, e.message);
       }
