@@ -25,7 +25,8 @@ const projects = [
   { name: 'solara-atelier', port: 5194 },
   { name: 'web-roast', port: 5195 },
   { name: 'mira-vale-studio', port: 5196 },
-  { name: 'rasmia-portfolio', port: 5197 }
+  { name: 'rasmia-portfolio', port: 5197 },
+  { name: 'atelier-editorial', port: 5198 }
 ];
 
 const MIME_TYPES = {

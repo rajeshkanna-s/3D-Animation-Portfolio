@@ -13,7 +13,8 @@ $projects = @(
     @{ Name = "nova-sneakers"; Port = 5189 },
     @{ Name = "maison-braise"; Port = 5190 },
     @{ Name = "soluna-cove-resort"; Port = 5192 },
-    @{ Name = "aurelia-developments"; Port = 5193 }
+    @{ Name = "aurelia-developments"; Port = 5193 },
+    @{ Name = "atelier-editorial"; Port = 5198 }
 )
 
 $baseDir = "D:\SOFTWARE\ANTIGRAVITY\3D Animation Portfolio"
