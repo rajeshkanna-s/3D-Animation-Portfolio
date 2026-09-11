@@ -28,7 +28,8 @@ const projects = [
   { name: 'solara-atelier', port: 5194, title: 'Solara Atelier • Horology' },
   { name: 'web-roast', port: 5195, title: 'Web Roast • Artisanal Coffee' },
   { name: 'mira-vale-studio', port: 5196, title: 'Mira Vale • Creative Studio' },
-  { name: 'rasmia-portfolio', repo: 'rasmia', port: 5197, title: 'RASMIA • Optical Design' }
+  { name: 'rasmia-portfolio', repo: 'rasmia', port: 5197, title: 'RASMIA • Optical Design' },
+  { name: 'atelier-editorial', port: 5198, title: 'Julien Vance • Atelier Editorial' }
 ];
 
 const distSiteDir = path.join(__dirname, 'dist_site');
