@@ -1,0 +1,62 @@
+:root {
+  /* Global Neutral Palette */
+  --canvas-warm: #F1EDE5;
+  --surface-paper: #FAF8F3;
+  --color-black: #11110F;
+  --color-charcoal: #24231F;
+  --text-primary: #11110F;
+  --text-secondary: #767067;
+  --text-muted: #9E978E;
+  --text-inverse: #F1EDE5;
+  
+  /* Structural Borders & Rules */
+  --border-subtle: rgba(17, 17, 15, 0.14);
+  --border-strong: rgba(17, 17, 15, 0.28);
+  --border-inverse: rgba(241, 237, 229, 0.2);
+
+  /* Primary Editorial Accent */
+  --accent-champagne: #B49A73;
+  --accent-champagne-light: #E7DECE;
+  --accent-champagne-glow: rgba(180, 154, 115, 0.25);
+
+  /* Project Domain Accents */
+  --accent-culinary: #4F6D56;
+  --accent-architecture: #536878;
+  --accent-footwear: #D72638;
+  --accent-skincare: #7D9078;
+  --accent-fragrance: #C78D46;
+  --accent-interiors: #684C38;
+  --accent-coffee: #B2743D;
+  --accent-jewelry: #D4AF37;
+
+  /* Typography Families */
+  --font-display-serif: 'Bodoni Moda', 'Cormorant Garamond', serif;
+  --font-sub-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Fluid Spacing Scale */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 14px;
+  --space-md: 24px;
+  --space-lg: 36px;
+  --space-xl: 56px;
+  --space-2xl: 84px;
+  --space-3xl: 120px;
+
+  /* Easing & Motion Principles */
+  --ease-cinematic: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-mechanical: cubic-bezier(0.65, 0, 0.35, 1);
+  --transition-fast: 220ms var(--ease-reveal);
+  --transition-normal: 450ms var(--ease-reveal);
+  --transition-slow: 850ms var(--ease-cinematic);
+
+  /* Elevation */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-pill: 9999px;
+  --shadow-subtle: 0 10px 30px -10px rgba(17, 17, 15, 0.08);
+  --shadow-elevated: 0 20px 48px -12px rgba(17, 17, 15, 0.14);
+}

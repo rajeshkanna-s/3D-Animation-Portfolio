@@ -12,9 +12,30 @@ $projects = @(
     @{ Name = "gusto-italian"; Port = 5188 },
     @{ Name = "nova-sneakers"; Port = 5189 },
     @{ Name = "maison-braise"; Port = 5190 },
+    @{ Name = "ember-restaurant"; Port = 5191 },
     @{ Name = "soluna-cove-resort"; Port = 5192 },
     @{ Name = "aurelia-developments"; Port = 5193 },
-    @{ Name = "atelier-editorial"; Port = 5198 }
+    @{ Name = "solara-atelier"; Port = 5194 },
+    @{ Name = "web-roast"; Port = 5195 },
+    @{ Name = "mira-vale-studio"; Port = 5196 },
+    @{ Name = "rasmia-portfolio"; Port = 5197 },
+    @{ Name = "atelier-editorial"; Port = 5198 },
+    @{ Name = "cinematic-portfolio"; Port = 5200 },
+    @{ Name = "01-gather"; Port = 5201 },
+    @{ Name = "02-altitude"; Port = 5202 },
+    @{ Name = "03-kinetic"; Port = 5203 },
+    @{ Name = "04-verdant-lab"; Port = 5204 },
+    @{ Name = "05-elemental-kitchen"; Port = 5205 },
+    @{ Name = "06-molecule-08"; Port = 5206 },
+    @{ Name = "07-habitat-system"; Port = 5207 },
+    @{ Name = "08-layered"; Port = 5208 },
+    @{ Name = "09-formula"; Port = 5209 },
+    @{ Name = "10-atelier"; Port = 5210 },
+    @{ Name = "11-bean-to-cup"; Port = 5211 },
+    @{ Name = "12-living-modules"; Port = 5212 },
+    @{ Name = "13-blend"; Port = 5213 },
+    @{ Name = "14-casa-horizon"; Port = 5214 },
+    @{ Name = "15-ritual"; Port = 5215 }
 )
 
 $baseDir = "D:\SOFTWARE\ANTIGRAVITY\3D Animation Portfolio"

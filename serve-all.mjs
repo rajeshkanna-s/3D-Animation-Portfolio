@@ -26,7 +26,23 @@ const projects = [
   { name: 'web-roast', port: 5195 },
   { name: 'mira-vale-studio', port: 5196 },
   { name: 'rasmia-portfolio', port: 5197 },
-  { name: 'atelier-editorial', port: 5198 }
+  { name: 'atelier-editorial', port: 5198 },
+  { name: 'cinematic-portfolio', port: 5200 },
+  { name: '01-gather', port: 5201 },
+  { name: '02-altitude', port: 5202 },
+  { name: '03-kinetic', port: 5203 },
+  { name: '04-verdant-lab', port: 5204 },
+  { name: '05-elemental-kitchen', port: 5205 },
+  { name: '06-molecule-08', port: 5206 },
+  { name: '07-habitat-system', port: 5207 },
+  { name: '08-layered', port: 5208 },
+  { name: '09-formula', port: 5209 },
+  { name: '10-atelier', port: 5210 },
+  { name: '11-bean-to-cup', port: 5211 },
+  { name: '12-living-modules', port: 5212 },
+  { name: '13-blend', port: 5213 },
+  { name: '14-casa-horizon', port: 5214 },
+  { name: '15-ritual', port: 5215 }
 ];
 
 const MIME_TYPES = {
@@ -75,14 +91,14 @@ hubServer.listen(HUB_PORT, '0.0.0.0', () => {
   console.log(`==========================================================\n`);
 });
 
-console.log('🚀 Launching all 13 project dev servers...\n');
+console.log(`🚀 Launching all ${projects.length} project dev servers...\n`);
 
 projects.forEach(({ name, port }) => {
   const projectDir = path.join(__dirname, name);
   const viteBin = path.join(projectDir, 'node_modules', 'vite', 'bin', 'vite.js');
   
   if (fs.existsSync(viteBin)) {
-    const child = spawn(process.execPath, [viteBin], {
+    const child = spawn(process.execPath, [viteBin, '--port', String(port), '--host'], {
       cwd: projectDir,
       stdio: 'ignore'
     });
