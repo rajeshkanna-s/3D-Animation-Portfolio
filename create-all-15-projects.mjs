@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename);
 // Read scenes from cinematic-portfolio
 const scenesDir = path.join(__dirname, 'cinematic-portfolio', 'src', 'scenes');
 const soundEngineContent = fs.readFileSync(path.join(__dirname, 'cinematic-portfolio', 'src', 'audio', 'soundEngine.ts'), 'utf8');
+const tsconfigContent = fs.readFileSync(path.join(__dirname, 'cinematic-portfolio', 'tsconfig.json'), 'utf8');
 
 const projectConfigs = [
   {
@@ -194,7 +195,7 @@ const projectConfigs = [
 
 const sharedNodeModules = path.join(__dirname, 'cinematic-portfolio', 'node_modules');
 
-console.log('🚀 Generating 15 standalone projects with dedicated Vite configs and 3D scenes...\n');
+console.log('🚀 Generating 15 standalone TypeScript/TSX projects with dedicated Vite configs and 3D scenes...\n');
 
 projectConfigs.forEach((cfg, idx) => {
   const projectDir = path.join(__dirname, cfg.id);
@@ -210,7 +211,7 @@ projectConfigs.forEach((cfg, idx) => {
     type: 'module',
     scripts: {
       dev: `vite --port ${cfg.port}`,
-      build: 'vite build',
+      build: 'tsc -b && vite build',
       preview: `vite preview --port ${cfg.port}`
     },
     dependencies: {
@@ -223,12 +224,16 @@ projectConfigs.forEach((cfg, idx) => {
       '@types/react-dom': '^19.0.4',
       '@types/three': '^0.174.0',
       '@vitejs/plugin-react': '5.0.4',
+      typescript: '^5.8.2',
       vite: '6.4.2'
     }
   };
   fs.writeFileSync(path.join(projectDir, 'package.json'), JSON.stringify(pkg, null, 2));
 
-  // 2. vite.config.mjs
+  // 2. tsconfig.json
+  fs.writeFileSync(path.join(projectDir, 'tsconfig.json'), tsconfigContent);
+
+  // 3. vite.config.ts
   const viteConfig = `import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -241,9 +246,13 @@ export default defineConfig({
   }
 });
 `;
-  fs.writeFileSync(path.join(projectDir, 'vite.config.mjs'), viteConfig);
+  fs.writeFileSync(path.join(projectDir, 'vite.config.ts'), viteConfig);
+  // Remove old .mjs if exists
+  if (fs.existsSync(path.join(projectDir, 'vite.config.mjs'))) {
+    fs.unlinkSync(path.join(projectDir, 'vite.config.mjs'));
+  }
 
-  // 3. index.html
+  // 4. index.html
   const indexHtml = `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -256,35 +265,48 @@ export default defineConfig({
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
 `;
   fs.writeFileSync(path.join(projectDir, 'index.html'), indexHtml);
 
-  // 4. src directory
+  // 5. src directory
   const srcDir = path.join(projectDir, 'src');
   if (!fs.existsSync(srcDir)) fs.mkdirSync(srcDir, { recursive: true });
 
-  // 5. Sound Engine
+  // Clean old jsx files
+  ['main.jsx', 'App.jsx', 'Scene3D.jsx'].forEach(f => {
+    const oldFile = path.join(srcDir, f);
+    if (fs.existsSync(oldFile)) fs.unlinkSync(oldFile);
+  });
+
+  // 6. Sound Engine
   const audioDir = path.join(srcDir, 'audio');
   if (!fs.existsSync(audioDir)) fs.mkdirSync(audioDir, { recursive: true });
-  fs.writeFileSync(path.join(audioDir, 'soundEngine.js'), soundEngineContent.replace(/import { SoundType } from '\.\.\/types\/portfolio';/, ''));
+  // Clean old js file
+  if (fs.existsSync(path.join(audioDir, 'soundEngine.js'))) {
+    fs.unlinkSync(path.join(audioDir, 'soundEngine.js'));
+  }
+  
+  const soundEngineTs = `export type SoundType = 'click' | 'whoosh' | 'glass' | 'metal' | 'water' | 'ambient' | 'coffee';
+${soundEngineContent.replace(/import { SoundType } from '\.\.\/types\/portfolio';/, '')}
+`;
+  fs.writeFileSync(path.join(audioDir, 'soundEngine.ts'), soundEngineTs);
 
-  // 6. Scene 3D component
+  // 7. Scene 3D component (TSX)
   const rawScene = fs.readFileSync(path.join(scenesDir, cfg.sceneFile), 'utf8');
   let cleanedScene = rawScene
-    .replace(/import { soundEngine } from '\.\.\/audio\/soundEngine';/g, `import { soundEngine } from './audio/soundEngine.js';`)
-    .replace(/import { sound } from '\.\.\/audio\/soundEngine';/g, `import { sound } from './audio/soundEngine.js';`);
+    .replace(/import { soundEngine } from '\.\.\/audio\/soundEngine';/g, `import { soundEngine } from './audio/soundEngine';`)
+    .replace(/import { sound } from '\.\.\/audio\/soundEngine';/g, `import { sound } from './audio/soundEngine';`);
   
-  // Make sure default export exists if not named
   if (!cleanedScene.includes('export default')) {
     cleanedScene += `\nexport default ${cfg.sceneExportName};\n`;
   }
 
-  fs.writeFileSync(path.join(srcDir, 'Scene3D.jsx'), cleanedScene);
+  fs.writeFileSync(path.join(srcDir, 'Scene3D.tsx'), cleanedScene);
 
-  // 7. index.css
+  // 8. index.css
   const indexCss = `:root {
   --bg-primary: #0C0D0E;
   --bg-surface: #141619;
@@ -492,16 +514,16 @@ header.app-header {
 `;
   fs.writeFileSync(path.join(srcDir, 'index.css'), indexCss);
 
-  // 8. src/App.jsx
+  // 9. src/App.tsx
   const prevProject = projectConfigs[(idx - 1 + projectConfigs.length) % projectConfigs.length];
   const nextProject = projectConfigs[(idx + 1) % projectConfigs.length];
 
-  const appJsx = `import React, { useState } from 'react';
+  const appTsx = `import React, { useState } from 'react';
 import Scene3D from './Scene3D';
-import { soundEngine } from './audio/soundEngine.js';
+import { soundEngine } from './audio/soundEngine';
 
-export default function App() {
-  const [soundActive, setSoundActive] = useState(false);
+export default function App(): React.JSX.Element {
+  const [soundActive, setSoundActive] = useState<boolean>(false);
 
   const toggleAudio = () => {
     const muted = soundEngine.toggleMute();
@@ -610,23 +632,23 @@ export default function App() {
   );
 }
 `;
-  fs.writeFileSync(path.join(srcDir, 'App.jsx'), appJsx);
+  fs.writeFileSync(path.join(srcDir, 'App.tsx'), appTsx);
 
-  // 9. src/main.jsx
-  const mainJsx = `import React from 'react';
+  // 10. src/main.tsx
+  const mainTsx = `import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
+import App from './App';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
 `;
-  fs.writeFileSync(path.join(srcDir, 'main.jsx'), mainJsx);
+  fs.writeFileSync(path.join(srcDir, 'main.tsx'), mainTsx);
 
-  // 10. Node modules junction
+  // 11. Node modules junction
   const destModules = path.join(projectDir, 'node_modules');
   if (!fs.existsSync(destModules)) {
     try {
@@ -636,7 +658,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     }
   }
 
-  console.log(`  ✅ [${String(idx + 1).padStart(2, '0')}] ${cfg.id.padEnd(24)} -> Created on Port ${cfg.port}`);
+  console.log(`  ✅ [${String(idx + 1).padStart(2, '0')}] ${cfg.id.padEnd(24)} -> Updated to TSX on Port ${cfg.port}`);
 });
 
-console.log('\n✨ All 15 standalone projects successfully scaffolded!');
+console.log('\n✨ All 15 standalone projects successfully updated to TSX/TypeScript!');
